@@ -38,20 +38,22 @@
   }
 
   function approvedFeeds(items) {
+    var allowedAuthorizationTypes = ["publisher-terms", "written-permission", "explicit-public-license"];
+    var allowedViewingMethods = ["official-link", "approved-embed", "approved-stream"];
     return items.filter(function (feed) {
-      return feed &&
-        feed.status === "approved" &&
-        feed.authorization &&
-        feed.authorization.status === "approved" &&
-        typeof feed.publisher_name === "string" &&
-        safeHttpsUrl(feed.publisher_url) &&
-        safeHttpsUrl(feed.source_page_url) &&
-        typeof feed.attribution === "string" &&
-        feed.authorization.evidence_reference &&
-        ["link-only", "embedding", "redistribution"].indexOf(feed.authorization.reuse_scope) !== -1;
+      if (!feed || feed.status !== "approved" || !feed.authorization) return false;
+      var auth = feed.authorization;
+      if (auth.status !== "approved") return false;
+      if (!safeHttpsUrl(feed.publisher_url) || !safeHttpsUrl(feed.source_page_url) || !safeHttpsUrl(feed.terms_url)) return false;
+      if (typeof feed.publisher_name !== "string" || typeof feed.attribution !== "string" || !feed.attribution.trim()) return false;
+      if (!auth.evidence_reference || allowedAuthorizationTypes.indexOf(auth.authorization_type) === -1) return false;
+      if (allowedViewingMethods.indexOf(feed.viewing_method) === -1) return false;
+      if (["link-only", "embedding", "redistribution"].indexOf(auth.reuse_scope) === -1) return false;
+      if (feed.viewing_method === "approved-embed" && ["embedding", "redistribution"].indexOf(auth.reuse_scope) === -1) return false;
+      if (feed.viewing_method === "approved-stream" && auth.reuse_scope !== "redistribution") return false;
+      return true;
     });
   }
-
   function addCityOptions(items) {
     var cities = Array.from(new Set(items.map(function (feed) { return feed.city; }).filter(Boolean)));
     cities.sort(function (a, b) { return a.localeCompare(b); });

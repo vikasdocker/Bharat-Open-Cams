@@ -21,14 +21,14 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - name: Install Android SDK packages
+      - name: Install Android 17 SDK packages
         run: |
           set -euo pipefail
           sdkmanager_path="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)"
           test -n "$sdkmanager_path"
           set +o pipefail
           yes | "$sdkmanager_path" --licenses
-          "$sdkmanager_path" "platforms;android-37" "build-tools;36.0.0"
+          "$sdkmanager_path" "platforms;android-37.0" "build-tools;37.0.0"
       - name: Download and verify Gradle 9.6.0
         run: |
           set -euo pipefail

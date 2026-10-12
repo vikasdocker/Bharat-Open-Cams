@@ -41,8 +41,8 @@ Create a free-to-use, India-focused catalog of authorized public camera feeds, a
 Every public catalog entry must have:
 1. Named and verifiable publisher.
 2. Public-facing source page or explicit written permission reference.
-3. Terms/licence reviewed for the exact use: linking, embedding, caching, or redistribution.
-4. Attribution requirements recorded.
+3. Usage scope recorded: a human-reviewed canonical public-page entry may be approved for an outbound link only; embedding, caching, proxying or redistribution require publisher terms, an explicit public licence, or written permission covering that use.
+4. A human-readable `terms_review_note` and attribution requirements are recorded.
 5. City/area and category grounded in publisher information.
 6. Date of authorization/terms verification and review process.
 7. A working approved viewing method; no credentials or bypass required.

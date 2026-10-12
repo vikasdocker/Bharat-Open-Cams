@@ -1,0 +1,61 @@
+name: Create draft pre-release
+
+on:
+  # The first merge to main creates a draft v0.1.0 pre-release.
+  # Later main pushes are harmless: the workflow is idempotent once it exists.
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Semantic version tag, for example v0.1.0"
+        required: true
+        default: "v0.1.0"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  create-draft:
+    name: Create draft pre-release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Validate release tag and check existing release
+        id: release-check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag_name || 'v0.1.0' }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Release tag must look like v0.1.0 or v0.1.0-rc.1" >&2
+            exit 1
+          fi
+          if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Release $RELEASE_TAG already exists; skipping duplicate creation."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Create draft pre-release
+        if: steps.release-check.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag_name || 'v0.1.0' }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target main \
+            --draft \
+            --prerelease \
+            --title "Bharat Open Cams $RELEASE_TAG" \
+            --notes-file docs/RELEASE_NOTES.md

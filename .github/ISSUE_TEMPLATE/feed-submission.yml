@@ -1,0 +1,85 @@
+name: Suggest an official public camera source
+description: Suggest a public webcam from an official publisher for human review.
+title: "[Feed proposal]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please suggest only an intentionally public feed. Do not submit private/residential CCTV, raw exposed IP-camera links, credentials, tokens, or feeds found by scanning.
+  - type: input
+    id: publisher
+    attributes:
+      label: Official publisher name
+      description: Government authority, tourism board, weather service, venue operator, etc.
+      placeholder: Official publisher name
+    validations:
+      required: true
+  - type: input
+    id: publisher_url
+    attributes:
+      label: Publisher website
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: source_page
+    attributes:
+      label: Official public camera page
+      description: The public page where the publisher intentionally presents this camera.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: terms
+    attributes:
+      label: Terms or permission evidence
+      description: Link to public terms/licence or describe explicit permission (do not post private correspondence).
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: city
+    attributes:
+      label: City and area
+      placeholder: City, area
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Traffic
+        - Tourism
+        - Weather
+        - Environment
+        - Public venue
+        - Other approved public-interest view
+    validations:
+      required: true
+  - type: dropdown
+    id: reuse_scope
+    attributes:
+      label: Permitted use (as stated by publisher)
+      description: If unclear, choose "Not sure"; the feed will not be published until verified.
+      options:
+        - Link to official page only
+        - Embedding permitted
+        - Redistribution explicitly permitted
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: attribution
+    attributes:
+      label: Required attribution
+      description: Quote or summarize attribution requirements from the public terms.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: This is an intentionally public source from a verifiable publisher, not a private or merely exposed camera.
+          required: true

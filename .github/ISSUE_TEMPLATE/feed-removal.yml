@@ -1,0 +1,52 @@
+name: Report a listing or request removal
+description: Report inaccurate source details, changed terms, or request removal of a camera listing.
+title: "[Feed review/removal]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This creates a **public GitHub issue**. Do not include passwords, access tokens, private video/images, private home addresses, phone numbers, or confidential permission correspondence. Use only public source URLs and non-sensitive details. A credible permission complaint may cause the listing to be suspended while reviewed.
+  - type: input
+    id: feed_id
+    attributes:
+      label: Catalog feed ID (if known)
+      description: Copy the ID from the repository's data/feeds.json file, if available.
+      placeholder: kea-weather-station-chennai
+    validations:
+      required: false
+  - type: input
+    id: source_page
+    attributes:
+      label: Public source page URL
+      description: Link to the public page already listed in the app/site.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason for this report
+      options:
+        - I am the publisher/operator and request removal
+        - Permission or authorization is unclear or withdrawn
+        - Source terms or viewing method changed
+        - Attribution/location/description is inaccurate
+        - The listing appears unavailable or broken
+        - Other non-sensitive concern
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Non-sensitive details
+      description: Explain the concern. Do not post confidential evidence or personal information.
+      placeholder: Describe the issue and any public documentation that supports it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I have not included credentials, private footage, or unnecessary personal information in this public issue.
+          required: true

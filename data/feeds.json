@@ -148,5 +148,80 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "vaishno-devi-shrine-board-live-darshan",
+    "name": "Shri Mata Vaishno Devi Shrine Board — Live Aarti / Darshan",
+    "description": "The Shrine Board's official public page describes live Atka Aarti/Darshan time windows. Availability follows the Board's posted schedule. This listing links to the official page only and does not embed, copy, cache, proxy or record media.",
+    "publisher_name": "Shri Mata Vaishno Devi Shrine Board",
+    "publisher_url": "https://maavaishnodevi.org/",
+    "source_page_url": "https://maavaishnodevi.org/live",
+    "city": "Katra",
+    "area": "Shri Mata Vaishno Devi Shrine",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://maavaishnodevi.org/live",
+      "terms_review_note": "Reviewed 2026-10-12: the Shrine Board's official HTTPS page is titled 'Live Atka Aarti / Darshan' and explicitly publishes seasonal live viewing windows. This entry links only to the Board's canonical page; no stream is embedded, copied, cached, proxied or recorded. Approval is limited to ordinary linking; suspend if the Board objects or the page terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shri Mata Vaishno Devi Shrine Board — use the official Live page.",
+    "removal_contact_url": "https://maavaishnodevi.org/live",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "kashi-vishwanath-official-live-darshan",
+    "name": "Shri Kashi Vishwanath Temple — Live Darshan",
+    "description": "The Trust's official portal describes a free online darshan service that broadcasts a live feed of the sanctum for devotees. Open the Trust's own page and follow any official scheduling or access steps; this directory does not embed, copy, cache, proxy or record media.",
+    "publisher_name": "Shri Kashi Vishwanath Temple Trust",
+    "publisher_url": "https://www.shrikashivishwanath.org/",
+    "source_page_url": "https://www.shrikashivishwanath.org/",
+    "city": "Varanasi",
+    "area": "Kashi Vishwanath Temple",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://www.shrikashivishwanath.org/",
+      "terms_review_note": "Reviewed 2026-10-12: the official Temple Trust HTTPS portal explicitly advertises its Live Darshan service and describes a live feed broadcast for devotees. This listing links only to the publisher's canonical portal; it does not bypass any booking/login process or embed, copy, cache, proxy or record video. Approval is limited to ordinary linking and must be suspended if the Trust objects or terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shri Kashi Vishwanath Temple Trust — open the official Live Darshan portal.",
+    "removal_contact_url": "https://www.shrikashivishwanath.org/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "somnath-trust-live-darshan",
+    "name": "Shree Somnath Trust — Live Darshan",
+    "description": "The Trust's official Live Darshan page lists views for Somnath Temple, Bhalka Mandir and Ram Mandir. Open the official page to select a view; schedule and availability are controlled by the Trust. This listing does not embed, copy, cache, proxy or record media.",
+    "publisher_name": "Shree Somnath Trust",
+    "publisher_url": "https://somnath.org/",
+    "source_page_url": "https://somnath.org/somnath-live-darshan",
+    "city": "Somnath",
+    "area": "Somnath Temple, Bhalka Mandir and Ram Mandir",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://somnath.org/somnath-live-darshan",
+      "terms_review_note": "Reviewed 2026-10-12: the Trust's official HTTPS page is titled 'Somnath Live Darshan' and presents official live-view sections for Somnath Temple, Bhalka Mandir and Ram Mandir. The catalog links only to that page and does not embed, copy, cache, proxy or record video. Approval is limited to ordinary linking and must be suspended if the Trust objects or page terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shree Somnath Trust — open the official Live Darshan page.",
+    "removal_contact_url": "https://somnath.org/somnath-live-darshan",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

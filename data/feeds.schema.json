@@ -196,6 +196,61 @@
             }
           }
         }
+      },
+      {
+        "if": {
+          "properties": {
+            "viewing_method": {
+              "const": "approved-embed"
+            }
+          },
+          "required": [
+            "viewing_method"
+          ]
+        },
+        "then": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "reuse_scope": {
+                  "enum": [
+                    "embedding",
+                    "redistribution"
+                  ]
+                }
+              },
+              "required": [
+                "reuse_scope"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "viewing_method": {
+              "const": "approved-stream"
+            }
+          },
+          "required": [
+            "viewing_method"
+          ]
+        },
+        "then": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "reuse_scope": {
+                  "const": "redistribution"
+                }
+              },
+              "required": [
+                "reuse_scope"
+              ]
+            }
+          }
+        }
       }
     ]
   }

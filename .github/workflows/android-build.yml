@@ -10,11 +10,36 @@ permissions:
   contents: read
 
 jobs:
-  android:
-    name: Verify Android workflow
+  assemble-debug:
+    name: Assemble Android debug APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Verify workflow execution
-        run: echo "Android workflow is recognized by GitHub Actions."
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Install Android API 37 and Build Tools
+        run: sdkmanager "platforms;android-37" "build-tools;36.0.0"
+      - name: Download and verify Gradle 9.6.0
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --silent --show-error --location https://services.gradle.org/distributions/gradle-9.6.0-bin.zip -o gradle.zip
+          curl --fail --silent --show-error --location https://services.gradle.org/distributions/gradle-9.6.0-bin.zip.sha256 -o gradle.zip.sha256
+          expected="$(tr -d '[:space:]' < gradle.zip.sha256)"
+          echo "$expected  gradle.zip" | sha256sum --check
+          unzip -q gradle.zip
+      - name: Assemble debug APK
+        run: $RUNNER_TEMP/gradle-9.6.0/bin/gradle :app:assembleDebug --no-daemon --stacktrace
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: bharat-open-cams-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7

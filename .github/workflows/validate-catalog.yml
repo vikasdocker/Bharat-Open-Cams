@@ -31,6 +31,7 @@ jobs:
           python -m json.tool data/feeds.json > /dev/null
           python -m json.tool data/feeds.example.json > /dev/null
           python -m json.tool data/feeds.schema.json > /dev/null
+          python -m json.tool data/source-candidates.json > /dev/null
       - name: Check JavaScript syntax
         run: |
           node --check app.js

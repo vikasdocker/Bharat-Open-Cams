@@ -33,6 +33,12 @@ A directory hub or an individual camera-view page operated by a third-party aggr
 
 A government tourism directory that intentionally offers public livestream links may also be listed as link-only navigation. Its own policy and each content provider's terms still govern the stream. Do not load such portals in frames or reuse their media unless permission explicitly permits it.
 
+### Auto-play and embeddable live players
+
+The web client may auto-play a stream only when its catalog entry is approved for `approved-embed`, the authorization scope explicitly includes `embedding` (or broader redistribution), and its `viewing_url` is a provider-hosted embed URL on the application's allow-list. The player is muted and inline to comply with common browser autoplay rules; below-the-fold players use lazy loading. Availability remains controlled by the publisher; an embedded player may report offline or show a scheduled/ended stream. Never treat a third-party directory or a normal publisher webpage as an embeddable player URL.
+
+Existing `publisher-public-page` entries stay link-only and must not acquire a `viewing_url`. Auto-play support does not upgrade existing permission records. Add a player only after checking the exact stream, official publisher, provider embed route and terms. The current catalog has no individually approved embeddable live streams, so the live wall intentionally shows an explanatory empty state until a source qualifies.
+
 ## Not acceptable
 - Residential buildings, private homes, apartment corridors, neighborhood/security cameras or personal doorbells without explicit authorization for public publication.
 - Feeds found by IP-range scanning, port scanning, search-engine dorking, exposed-device databases, or scraping lists of unsecured cameras.

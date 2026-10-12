@@ -1,7 +1,6 @@
 name: Suggest an official public camera source
 description: Suggest a public webcam from an official publisher for human review.
 title: "[Feed proposal]: "
-labels: ["feed-review"]
 body:
   - type: markdown
     attributes:

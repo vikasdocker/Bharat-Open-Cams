@@ -3,7 +3,7 @@
 **Last researched:** 12 October 2026  
 **Individually verified road/traffic CCTV endpoints approved for direct integration:** 0.  
 **Catalog size:** 41 outbound-link entries (4 nationwide discovery hubs and 37 individual public-source pages).  
-**Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. OpenCCTV.org's India directory reported 11 camera listings on the latest retrieved page, with individual status varying. The open-source opencam.live map can also be searched by region, although an India-only count was not verified. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
+**Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. OpenCCTV.org's India directory reported 11 camera listings on the latest retrieved page, with individual status varying. The open-source opencam.live map can also be searched by region, although an India-only count was not verified. The open-source opencam.live map is also searchable by region; an India-only camera count was not verified. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
 **Important:** the ARGOS ATLAS entry is a third-party public camera-map directory, not a Government of India service; its individual camera sources/terms remain the authority cited by that operator. Utsav's Live Darshan items are public-venue livestreams, not road CCTV. All 41 entries are link-only: Bharat Open Cams does not embed, copy, extract, cache, proxy or record source media. Some live views may be schedule-dependent. The city/highway authority pages below remain research leads, not camera feeds; public reachability is not blanket permission to reuse media.
 
 ## Nationwide discovery hubs (link-only)
@@ -215,6 +215,8 @@ The next legitimate route for the road-CCTV goal is source-owner outreach:
 
 - ARGOS ATLAS India camera map: https://argosatlas.com/en/cameras/india/
 - OpenCCTV.org India camera directory: https://opencctv.org/cameras/india
+- opencam.live public camera map: https://opencam.live/
+- opencam.live source methodology: https://opencam.live/guides/where-the-data-comes-from
 - opencam.live public camera map: https://opencam.live/
 - opencam.live source methodology: https://opencam.live/guides/where-the-data-comes-from
 - Freecam.ai Choolaimedu High Road webcam: https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/

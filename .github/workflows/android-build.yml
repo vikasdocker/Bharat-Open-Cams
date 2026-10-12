@@ -21,10 +21,17 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Find Android SDK Manager
+        id: sdk
+        run: |
+          set -euo pipefail
+          sdkmanager_path="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)"
+          test -n "$sdkmanager_path"
+          echo "sdkmanager=$sdkmanager_path" >> "$GITHUB_OUTPUT"
+      - name: Accept Android SDK licenses
+        run: yes | "${{ steps.sdk.outputs.sdkmanager }}" --licenses
       - name: Install Android API 37 and Build Tools
-        run: sdkmanager "platforms;android-37" "build-tools;36.0.0"
+        run: "${{ steps.sdk.outputs.sdkmanager }}" "platforms;android-37" "build-tools;36.0.0"
       - name: Download and verify Gradle 9.6.0
         run: |
           set -euo pipefail
@@ -35,7 +42,7 @@ jobs:
           echo "$expected  gradle.zip" | sha256sum --check
           unzip -q gradle.zip
       - name: Assemble debug APK
-        run: $RUNNER_TEMP/gradle-9.6.0/bin/gradle :app:assembleDebug --no-daemon --stacktrace
+        run: "$RUNNER_TEMP/gradle-9.6.0/bin/gradle" :app:assembleDebug --no-daemon --stacktrace
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:

@@ -1,50 +1,201 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/bharat-open-cams/feeds.schema.json",
+  "$id": "https://github.com/vikasdocker/Bharat-Open-Cams/blob/main/data/feeds.schema.json",
   "title": "Bharat Open Cams feed registry",
   "description": "Catalog entries for public camera feeds whose publisher authorization has been verified. Internet reachability alone is not authorization.",
   "type": "array",
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["id", "name", "publisher_name", "publisher_url", "source_page_url", "city", "category", "viewing_method", "authorization", "attribution", "status", "verified_at", "review_due_at"],
+    "required": [
+      "id",
+      "name",
+      "publisher_name",
+      "publisher_url",
+      "source_page_url",
+      "terms_url",
+      "city",
+      "category",
+      "viewing_method",
+      "authorization",
+      "attribution",
+      "status",
+      "verified_at",
+      "review_due_at"
+    ],
     "properties": {
-      "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
-      "name": {"type": "string", "minLength": 2, "maxLength": 160},
-      "description": {"type": "string", "maxLength": 1000},
-      "publisher_name": {"type": "string", "minLength": 2},
-      "publisher_url": {"type": "string", "format": "uri", "pattern": "^https://"},
-      "source_page_url": {"type": "string", "format": "uri", "pattern": "^https://"},
-      "terms_url": {"type": "string", "format": "uri", "pattern": "^https://"},
-      "city": {"type": "string", "minLength": 2},
-      "area": {"type": "string", "maxLength": 160},
-      "category": {"type": "string", "enum": ["traffic", "tourism", "weather", "environment", "public-venue", "other-approved"]},
-      "latitude": {"type": "number", "minimum": -90, "maximum": 90},
-      "longitude": {"type": "number", "minimum": -180, "maximum": 180},
-      "viewing_method": {"type": "string", "enum": ["official-link", "approved-embed", "approved-stream"]},
-      "viewing_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 160
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 1000
+      },
+      "publisher_name": {
+        "type": "string",
+        "minLength": 2
+      },
+      "publisher_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "source_page_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "terms_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "city": {
+        "type": "string",
+        "minLength": 2
+      },
+      "area": {
+        "type": "string",
+        "maxLength": 160
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "traffic",
+          "tourism",
+          "weather",
+          "environment",
+          "public-venue",
+          "other-approved"
+        ]
+      },
+      "latitude": {
+        "type": "number",
+        "minimum": -90,
+        "maximum": 90
+      },
+      "longitude": {
+        "type": "number",
+        "minimum": -180,
+        "maximum": 180
+      },
+      "viewing_method": {
+        "type": "string",
+        "enum": [
+          "official-link",
+          "approved-embed",
+          "approved-stream"
+        ]
+      },
+      "viewing_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
       "authorization": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["status", "authorization_type", "reuse_scope", "evidence_reference"],
+        "required": [
+          "status",
+          "authorization_type",
+          "reuse_scope",
+          "evidence_reference"
+        ],
         "properties": {
-          "status": {"type": "string", "enum": ["pending", "approved", "suspended", "removed"]},
-          "authorization_type": {"type": "string", "enum": ["publisher-terms", "written-permission", "explicit-public-license"]},
-          "reuse_scope": {"type": "string", "enum": ["link-only", "embedding", "redistribution"]},
-          "evidence_reference": {"type": "string", "minLength": 5, "description": "Public terms URL or non-sensitive evidence reference; never include confidential correspondence or credentials."},
-          "reviewer": {"type": "string"}
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "suspended",
+              "removed"
+            ]
+          },
+          "authorization_type": {
+            "type": "string",
+            "enum": [
+              "publisher-terms",
+              "written-permission",
+              "explicit-public-license"
+            ]
+          },
+          "reuse_scope": {
+            "type": "string",
+            "enum": [
+              "link-only",
+              "embedding",
+              "redistribution"
+            ]
+          },
+          "evidence_reference": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Public terms URL or non-sensitive evidence reference; never include confidential correspondence or credentials."
+          },
+          "reviewer": {
+            "type": "string"
+          }
         }
       },
-      "attribution": {"type": "string", "minLength": 2},
-      "removal_contact_url": {"type": "string", "format": "uri", "pattern": "^https://"},
-      "status": {"type": "string", "enum": ["pending-review", "approved", "suspended", "removed"]},
-      "verified_at": {"type": "string", "format": "date"},
-      "review_due_at": {"type": "string", "format": "date"}
+      "attribution": {
+        "type": "string",
+        "minLength": 2
+      },
+      "removal_contact_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "pending-review",
+          "approved",
+          "suspended",
+          "removed"
+        ]
+      },
+      "verified_at": {
+        "type": "string",
+        "format": "date"
+      },
+      "review_due_at": {
+        "type": "string",
+        "format": "date"
+      }
     },
     "allOf": [
       {
-        "if": {"properties": {"status": {"const": "approved"}}, "required": ["status"]},
-        "then": {"properties": {"authorization": {"properties": {"status": {"const": "approved"}}}}
+        "if": {
+          "properties": {
+            "status": {
+              "const": "approved"
+            }
+          },
+          "required": [
+            "status"
+          ]
+        },
+        "then": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "status": {
+                  "const": "approved"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            }
+          }
+        }
       }
     ]
   }

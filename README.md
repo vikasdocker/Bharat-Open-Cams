@@ -6,12 +6,12 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 
 ## Current status
 
-**MVP starter in development.** The responsive web directory and initial native Android screen are scaffolded. The feed catalog is deliberately empty, so the product does not yet show live camera feeds. The Android screen is not yet connected to the catalog and does not play video. GitHub Pages and Play Store are not yet published.
+**MVP foundation in development.** The responsive web directory and native Android screen are implemented. Both clients read the shared public catalog; the Android client fetches it from the canonical GitHub raw URL over HTTPS, filters approved sources, and opens the publisher's official page. The feed catalog is deliberately empty because no public road/traffic CCTV feed has passed source and usage-permission review yet. GitHub Pages and Play Store are not yet published.
 
 ## What is included
 
 - Responsive website with city, category and keyword filters; it displays only entries with approved catalog and authorization states.
-- Native Android starter using Kotlin and Jetpack Compose.
+- Native Android client using Kotlin and Jetpack Compose, with HTTPS catalog loading, city/category/search filters, retry/error states, and external opening of the official source page.
 - Versioned feed registry schema, strict catalog validation and CI.
 - A feed submission form that asks for official publisher and permission evidence.
 - Privacy, terms, security and contribution docs.
@@ -32,6 +32,8 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 - [Privacy notice](docs/PRIVACY.md)
 - [Terms of use](docs/TERMS.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [Source research register](docs/SOURCE_RESEARCH.md)
+- [Machine-readable source candidates](data/source-candidates.json)
 - [Web deployment](docs/WEB_DEPLOYMENT.md)
 - [Contribution workflow](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
@@ -44,7 +46,7 @@ Use a local HTTP server so the browser can load the JSON catalog:
 
     python -m http.server 8000
 
-Then open http://localhost:8000. Since data/feeds.json currently contains an empty array, the directory shows an empty-state message rather than inventing camera entries.
+Then open http://localhost:8000. Since data/feeds.json currently contains an empty array, the directory shows an empty-state message rather than inventing camera entries. The website reads this same file locally.
 
 ## Android setup
 

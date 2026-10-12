@@ -127,6 +127,34 @@
       "status": "permission-required",
       "notes": "The technical specification describes a general-public live traffic-camera capability for an expressway, but it does not establish a current public viewing URL or any third-party reuse permission.",
       "next_action": "Ask NHAI or the relevant concessionaire for a current official public camera page and the allowed integration terms; do not look for hidden endpoints."
+    },
+    {
+      "id": "iskcon-bangalore-live-darshan",
+      "publisher_name": "ISKCON Bangalore",
+      "publisher_url": "https://www.iskconbangalore.org/",
+      "source_page_url": "https://www.iskconbangalore.org/live-darshan/",
+      "state": "Karnataka",
+      "city": "Bengaluru",
+      "source_type": "official temple live-darshan page",
+      "actual_public_live_stream_verified": false,
+      "reuse_scope": "link-only only if current page playback can be verified",
+      "status": "manual-review-required",
+      "notes": "The temple's official materials refer viewers to its Live Darshan page, and a third-party webcam directory records this as the provider website. The current page returned an automated browser-verification screen during this review, so current playback and page terms could not be checked directly.",
+      "next_action": "Manually open the canonical publisher page in a normal browser, confirm it provides a public camera/live-darshan view today, and review source terms before adding to data/feeds.json."
+    },
+    {
+      "id": "ahmedabad-jagannathji-darshan-page",
+      "publisher_name": "Shree Jagannathji Mandir, Ahmedabad",
+      "publisher_url": "https://www.jagannathjiahd.org/",
+      "source_page_url": "https://www.jagannathjiahd.org/daily-darshan/",
+      "state": "Gujarat",
+      "city": "Ahmedabad",
+      "source_type": "official daily darshan page with video content",
+      "actual_public_live_stream_verified": false,
+      "reuse_scope": "link-only only if a current public live-camera view is confirmed",
+      "status": "not-a-verified-live-feed",
+      "notes": "The official page publishes daily darshan timings and an 'Our Video' player, but the page reviewed did not establish that this is a live webcam rather than recorded video.",
+      "next_action": "Do not list as a camera until the publisher's page clearly offers a live view or the source owner confirms one."
     }
   ]
 }

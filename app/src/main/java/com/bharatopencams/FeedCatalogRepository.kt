@@ -52,14 +52,20 @@ object FeedCatalogRepository {
                 authorization.optString("status") != "approved"
             ) continue
 
-            val publisherUrl = item.optString("publisher_url")
-            val sourcePageUrl = item.optString("source_page_url")
-            val termsUrl = item.optString("terms_url")
-            val sourcePage = httpsUrl(sourcePageUrl) ?: continue
-            if (httpsUrl(publisherUrl) == null || httpsUrl(termsUrl) == null) continue
+            val publisherUrl = httpsUrl(item.optString("publisher_url")) ?: continue
+            val sourcePageUrl = httpsUrl(item.optString("source_page_url")) ?: continue
+            val termsUrlRaw = item.optString("terms_url")
+            val termsUrl = httpsUrl(termsUrlRaw)
 
             val authorizationType = authorization.optString("authorization_type")
-            if (authorizationType !in setOf("publisher-terms", "written-permission", "explicit-public-license")) continue
+            if (authorizationType !in setOf(
+                    "publisher-terms",
+                    "written-permission",
+                    "explicit-public-license",
+                    "publisher-public-page"
+                )
+            ) continue
+            if (authorizationType in setOf("publisher-terms", "explicit-public-license") && termsUrl == null) continue
 
             val reuseScope = authorization.optString("reuse_scope")
             if (reuseScope !in setOf("link-only", "embedding", "redistribution")) continue
@@ -68,6 +74,13 @@ object FeedCatalogRepository {
             if (viewingMethod !in setOf("official-link", "approved-embed", "approved-stream")) continue
             if (viewingMethod == "approved-embed" && reuseScope !in setOf("embedding", "redistribution")) continue
             if (viewingMethod == "approved-stream" && reuseScope != "redistribution") continue
+            if (authorizationType == "publisher-public-page" &&
+                (viewingMethod != "official-link" || reuseScope != "link-only")
+            ) continue
+
+            val evidenceReference = authorization.optString("evidence_reference").trim()
+            val termsReviewNote = authorization.optString("terms_review_note").trim()
+            if (evidenceReference.isBlank() || termsReviewNote.length < 20) continue
 
             val name = item.optString("name").trim()
             val publisher = item.optString("publisher_name").trim()
@@ -82,8 +95,9 @@ object FeedCatalogRepository {
                 description = item.optString("description", ""),
                 publisherName = publisher,
                 publisherUrl = publisherUrl,
-                sourcePageUrl = sourcePage,
+                sourcePageUrl = sourcePageUrl,
                 termsUrl = termsUrl,
+                termsReviewNote = termsReviewNote,
                 city = city,
                 area = item.optString("area", ""),
                 category = item.optString("category"),
@@ -95,7 +109,6 @@ object FeedCatalogRepository {
         }
         return approved.distinctBy { it.id }.sortedWith(compareBy<CameraFeed> { it.city }.thenBy { it.name })
     }
-
     private fun httpsUrl(value: String): String? {
         val uri = runCatching { android.net.Uri.parse(value) }.getOrNull() ?: return null
         return value.takeIf { uri.scheme == "https" && !uri.host.isNullOrBlank() }
@@ -109,7 +122,8 @@ data class CameraFeed(
     val publisherName: String,
     val publisherUrl: String,
     val sourcePageUrl: String,
-    val termsUrl: String,
+    val termsUrl: String?,
+    val termsReviewNote: String,
     val city: String,
     val area: String,
     val category: String,

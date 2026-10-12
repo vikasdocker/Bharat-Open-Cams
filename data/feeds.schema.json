@@ -13,7 +13,6 @@
       "publisher_name",
       "publisher_url",
       "source_page_url",
-      "terms_url",
       "city",
       "category",
       "viewing_method",
@@ -105,7 +104,8 @@
           "status",
           "authorization_type",
           "reuse_scope",
-          "evidence_reference"
+          "evidence_reference",
+          "terms_review_note"
         ],
         "properties": {
           "status": {
@@ -122,7 +122,8 @@
             "enum": [
               "publisher-terms",
               "written-permission",
-              "explicit-public-license"
+              "explicit-public-license",
+              "publisher-public-page"
             ]
           },
           "reuse_scope": {
@@ -140,6 +141,11 @@
           },
           "reviewer": {
             "type": "string"
+          },
+          "terms_review_note": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Human-readable note explaining why the chosen link/embed/stream method is permitted; do not include confidential correspondence or credentials."
           }
         }
       },
@@ -248,6 +254,66 @@
               "required": [
                 "reuse_scope"
               ]
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "authorization_type": {
+                  "enum": [
+                    "publisher-terms",
+                    "explicit-public-license"
+                  ]
+                }
+              },
+              "required": [
+                "authorization_type"
+              ]
+            }
+          },
+          "required": [
+            "authorization"
+          ]
+        },
+        "then": {
+          "required": [
+            "terms_url"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "authorization_type": {
+                  "const": "publisher-public-page"
+                }
+              },
+              "required": [
+                "authorization_type"
+              ]
+            }
+          },
+          "required": [
+            "authorization"
+          ]
+        },
+        "then": {
+          "properties": {
+            "viewing_method": {
+              "const": "official-link"
+            },
+            "authorization": {
+              "properties": {
+                "reuse_scope": {
+                  "const": "link-only"
+                }
+              }
             }
           }
         }

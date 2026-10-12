@@ -723,5 +723,30 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "india-opencam-live-public-map",
+    "name": "Public traffic, weather and city cameras — opencam live map",
+    "description": "A global open-source public-camera map gathering road-agency, weather, harbour and city webcams published by their operators. It requires no account and says it does not record or archive camera images. Zoom/search for India to explore current coverage. This directory links to opencam only and does not reuse camera media.",
+    "publisher_name": "opencam — open-source public camera map",
+    "publisher_url": "https://opencam.live/about",
+    "source_page_url": "https://opencam.live/",
+    "city": "India",
+    "area": "India and global map",
+    "category": "traffic",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://opencam.live/guides/where-the-data-comes-from",
+      "terms_review_note": "Reviewed 2026-10-12: opencam describes itself as an open-source map of publicly published road-agency, weather, harbour and city cameras, with a source shown for every camera. Its public site says camera images belong to the operating organisations and are shown live without keeping an archive. This project links to opencam's map only and does not copy, embed, proxy, cache or record media. It is not an official government channel; counts and geographic coverage vary.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "opencam — open-source public camera map; each camera lists its operating source.",
+    "removal_contact_url": "https://opencam.live/about",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

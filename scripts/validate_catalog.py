@@ -49,19 +49,26 @@ def main() -> int:
                 if auth.get("status") != "approved":
                     print(f"ERROR {path.relative_to(ROOT)}[{index}]: approved feed lacks approved authorization status")
                     error_count += 1
-                if not auth.get("evidence_reference") or not feed.get("terms_url"):
-                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: approved feed lacks authorization/terms evidence")
+                authorization_type = auth.get("authorization_type")
+                method = feed.get("viewing_method")
+                scope = auth.get("reuse_scope")
+                if not auth.get("evidence_reference") or not auth.get("terms_review_note"):
+                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: approved feed lacks authorization evidence or a terms-review note")
+                    error_count += 1
+                if authorization_type in ("publisher-terms", "explicit-public-license") and not feed.get("terms_url"):
+                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: publisher terms/public licence approval requires a terms_url")
                     error_count += 1
                 if not feed.get("publisher_name") or not feed.get("attribution"):
                     print(f"ERROR {path.relative_to(ROOT)}[{index}]: approved feed lacks publisher attribution")
                     error_count += 1
-                method = feed.get("viewing_method")
-                scope = auth.get("reuse_scope")
                 if method == "approved-embed" and scope not in ("embedding", "redistribution"):
                     print(f"ERROR {path.relative_to(ROOT)}[{index}]: embedding requires embedding or redistribution permission")
                     error_count += 1
                 if method == "approved-stream" and scope != "redistribution":
                     print(f"ERROR {path.relative_to(ROOT)}[{index}]: direct stream use requires explicit redistribution permission")
+                    error_count += 1
+                if authorization_type == "publisher-public-page" and (method != "official-link" or scope != "link-only"):
+                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: public-page approval permits outbound links only")
                     error_count += 1
 
     if error_count:

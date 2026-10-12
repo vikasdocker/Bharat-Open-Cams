@@ -1,0 +1,30 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+local.properties
+secrets/
+*.pem
+*.key
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Android / Gradle
+.gradle/
+build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Web
+node_modules/
+dist/
+coverage/
+.next/

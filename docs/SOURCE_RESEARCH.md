@@ -1,8 +1,20 @@
 # India Source Research Register
 
 **Last researched:** 12 October 2026  
-**Public approved CCTV feeds found in this review:** 0  
-**Important:** the entries below are research leads only. They are not approved camera feeds and must never be copied into `data/feeds.json` as live cameras without fresh review.
+**Public approved road/traffic CCTV feeds found in this review:** 0  
+**Approved link-only public webcam sources:** 1 (KeaCam, Chennai; weather webcam, not CCTV).  
+**Important:** the authority pages below are research leads only and are not approved camera feeds. KeaCam is the one approved listing, limited to an outbound link to the publisher's page. Nothing from the research register is automatically a camera-feed permission.
+
+## Approved listing
+
+### KeaCam — KWS Chennai weather-station webcams
+
+Canonical publisher page: https://kwschennai.com/keacam.htm  
+Publisher/about page: https://kwschennai.com/about.htm
+
+The operator's own public page lists three outdoor weather-station views (West, South-East and North-East); its About Us page describes the publisher-installed cameras and still images refreshing every few minutes. The catalog entry is approved only as a link to that canonical public page. The project does not copy the images, embed the player, extract stream URLs, cache/re-host pictures, proxy or record footage. No separate media-reuse licence was found in this review, so the approval is deliberately limited to an external link and must be suspended if the publisher objects or its terms change.
+
+This is a weather webcam and **not a road/traffic CCTV feed**. It proves that the catalog integration works with one conservative public-page listing; it does not satisfy the goal of city-wise road cameras.
 
 ## Findings
 
@@ -41,9 +53,9 @@ NIC provides live government channels and event webcasts. These are intentional 
 
 ## Research conclusion
 
-I did not find a source in this review that met all criteria for an approved public road/traffic CCTV feed with a verified public viewing method and permission to reuse it in this app. This is not evidence that no such feeds exist; it means permission and technical access have not yet been verified.
+I did not find a source in this review that met all criteria for an approved public road/traffic CCTV feed. One weather-webcam page has been listed for link-only use. This is not evidence that no public road feeds exist; it means a public viewing method and permission have not yet been verified.
 
-The next legitimate route is source-owner outreach:
+The next legitimate route for the road-CCTV goal is source-owner outreach:
 1. Ask official traffic/municipal authorities whether they publish public traffic webcams.
 2. Request the canonical public viewing URL, allowed integration method, usage/licence terms, attribution text, rate limits, and removal/contact path.
 3. Record written permission without placing confidential correspondence in this public repository.
@@ -51,6 +63,8 @@ The next legitimate route is source-owner outreach:
 
 ## Research references
 
+- KeaCam publisher page: https://kwschennai.com/keacam.htm
+- KeaWeather about page: https://kwschennai.com/about.htm
 - Mumbai Traffic Police CCTV page: https://trafficpolicemumbai.maharashtra.gov.in/cctv/
 - Mumbai Traffic Police initiative: https://trafficpolicemumbai.maharashtra.gov.in/en/initiative/
 - Delhi Traffic Police Public Interface: https://www.traffic.delhipolice.gov.in/en/public-interface

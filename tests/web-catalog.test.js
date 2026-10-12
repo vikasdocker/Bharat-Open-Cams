@@ -52,7 +52,10 @@ async function launchWith(catalog) {
     "city-filter", "category-filter", "directory-note", "current-year"
   ];
   const elements = Object.fromEntries(ids.map(id => [id, makeElement()]));
-  const document = {\n    getElementById: id => elements[id] || (elements[id] = makeElement()),\n    createElement: tagName => Object.assign(makeElement(), { tagName })\n  };
+  const document = {
+    getElementById: id => elements[id] || (elements[id] = makeElement()),
+    createElement: tagName => Object.assign(makeElement(), { tagName })
+  };
   const context = {
     document,
     URL,

@@ -78,14 +78,15 @@ object FeedCatalogRepository {
             // This app currently supports only the three reviewed OpenCCTV viewer wrappers.
             // Do not accept arbitrary iframe hosts or raw upstream media URLs from the catalog.
             if (authorizationType == "publisher-embed-feature") {
-                val viewerUri = runCatching { Uri.parse(viewingUrl ?: "") }.getOrNull()
+                val viewerUri = runCatching { android.net.Uri.parse(viewingUrl ?: "") }.getOrNull()
                 val validPath = Regex("^/cameras/india/[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+-\\d{4,}$")
                     .matches(viewerUri?.path.orEmpty())
                 if (viewingMethod != "approved-embed" ||
                     reuseScope != "embedding" ||
                     viewingUrl == null ||
                     viewingUrl != sourcePageUrl ||
-                    viewerUri?.scheme != "https" ||
+                    viewerUri == null ||
+                    viewerUri.scheme != "https" ||
                     viewerUri.host != "opencctv.org" ||
                     viewerUri.query != null ||
                     viewerUri.fragment != null ||

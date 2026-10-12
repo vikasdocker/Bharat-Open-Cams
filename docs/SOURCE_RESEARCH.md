@@ -3,8 +3,8 @@
 **Last researched:** 12 October 2026  
 **Public approved road/traffic CCTV feeds found in this review:** 0
 **Additional city/authority portals reviewed:** Hyderabad, Kolkata, Maharashtra Highway Traffic Police, and an NHAI expressway camera specification. These remain research leads, not approved feeds.  
-**Approved link-only public camera/live-view sources:** 6 (KeaCam, Chennai; AQI Camera page, New Delhi; ISKCON Delhi Live Darshan, New Delhi; Mumbadevi Mandir, Mumbai; Shree Saibaba Samadhi Mandir, Shirdi; Vitthal Rukmini Mandir, Pandharpur).  
-**Important:** these six catalog entries are link-only and open their publishers' canonical pages; they are not embeddable feeds, and four temple live-darshan pages are schedule-dependent. They do not provide road/traffic CCTV access. Other authority pages below remain research leads only and are not approved camera feeds. Nothing from the research register is automatically permission to copy or redistribute media.
+**Approved link-only public camera/live-view sources:** 9 (KeaCam, Chennai; AQI Camera page, New Delhi; ISKCON Delhi Live Darshan, New Delhi; Mumbadevi Mandir, Mumbai; Shree Saibaba Samadhi Mandir, Shirdi; Vitthal Rukmini Mandir, Pandharpur; Vaishno Devi Shrine, Katra; Kashi Vishwanath, Varanasi; Somnath Trust, Somnath).  
+**Important:** these nine catalog entries are link-only and open their publishers' canonical pages; they are not embeddable feeds. Temple live-darshan availability follows each publisher's schedule and any official access steps. They do not provide road/traffic CCTV access. Other authority pages below remain research leads only and are not approved camera feeds. Nothing from the research register is automatically permission to copy or redistribute media.
 
 ## Approved listing
 
@@ -18,6 +18,25 @@ The operator's own public page lists three outdoor weather-station views (West, 
 This is a weather webcam and **not a road/traffic CCTV feed**. It proves that the catalog integration works with one conservative public-page listing; it does not satisfy the goal of city-wise road cameras.
 
 
+
+
+### Shri Mata Vaishno Devi Shrine Board — Katra
+
+Canonical publisher page: https://maavaishnodevi.org/live
+
+The Shrine Board's official page describes Live Atka Aarti/Darshan and publishes seasonal time windows. This directory links only to the Board's official page and does not embed, copy, proxy, cache or record media. **Status: approved for ordinary external linking only; availability follows the Board's schedule.**
+
+### Shri Kashi Vishwanath Temple Trust — Varanasi
+
+Canonical publisher page: https://www.shrikashivishwanath.org/
+
+The official Trust portal explicitly advertises a free online Live Darshan facility that broadcasts a live feed of the sanctum for devotees. This directory links only to the Trust's canonical portal and does not bypass any official booking/access steps or embed, copy, proxy, cache or record video. **Status: approved for ordinary external linking only.**
+
+### Shree Somnath Trust — Somnath
+
+Canonical publisher page: https://somnath.org/somnath-live-darshan
+
+The Trust's own Live Darshan page lists live-view sections for Somnath Temple, Bhalka Mandir and Ram Mandir. This directory links only to the Trust's page and does not embed, copy, proxy, cache or record media. **Status: approved for ordinary external linking only; availability is controlled by the Trust.**
 
 ### AQI Camera — New Delhi
 
@@ -130,7 +149,7 @@ The official page publishes daily darshan times and a video player, but the revi
 
 ## Research conclusion
 
-I did not find a source in this review that met all criteria for an approved public road/traffic CCTV feed. Six deliberately published public pages are listed under link-only scope: a Chennai weather webcam, a New Delhi AQI camera page, and official temple Live Darshan pages in Delhi, Mumbai, Shirdi and Pandharpur. These are public web-camera/live-view sources, not road/traffic CCTV; public road-camera viewing routes and permission remain unverified.
+I did not find a source in this review that met all criteria for an approved public road/traffic CCTV feed. Nine deliberately published public pages are listed under link-only scope across Chennai, New Delhi, Delhi, Mumbai, Shirdi, Pandharpur, Katra, Varanasi and Somnath. These include one weather webcam, one AQI city-camera page and seven public-venue/live-darshan pages. They are not road/traffic CCTV; public road-camera viewing routes and permission remain unverified.
 
 The next legitimate route for the road-CCTV goal is source-owner outreach:
 1. Ask official traffic/municipal authorities whether they publish public traffic webcams.
@@ -141,6 +160,9 @@ The next legitimate route for the road-CCTV goal is source-owner outreach:
 ## Research references
 
 - KeaCam publisher page: https://kwschennai.com/keacam.htm
+- Vaishno Devi Shrine Board Live Darshan: https://maavaishnodevi.org/live
+- Kashi Vishwanath official Live Darshan portal: https://www.shrikashivishwanath.org/
+- Somnath Trust Live Darshan: https://somnath.org/somnath-live-darshan
 - AQI Camera — New Delhi: https://www.aqi.in/in/aqi-camera
 - ISKCON Delhi Live Darshan: https://www.iskcondelhi.com/live-darshan/
 - Shree Vitthal Rukmini Temple Live Darshan: https://vitthalrukminimandir.org/live_darshan.php

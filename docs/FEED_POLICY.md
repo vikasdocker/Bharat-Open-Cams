@@ -58,7 +58,7 @@ Do not place private contact details or confidential permission documents in a p
 
 ## Review and withdrawal
 
-A human review is required before publication and at each review deadline. Any credible authorization complaint, terms change, or uncertainty immediately changes the feed to `suspended` pending review. Remove the entry when permission is withdrawn or cannot be substantiated.
+A human review is required before publication and at each review deadline. Any credible authorization complaint, terms change, or uncertainty immediately changes the feed to `suspended` pending review. Remove the entry when permission is withdrawn or cannot be substantiated. Every website camera card links to the public GitHub `feed-removal` issue form; the Android card does the same. The form must not request passwords, private video, or personal information. Handle confidential source-owner concerns privately through a contact channel established by the maintainer.
 
 ## Legal review
 

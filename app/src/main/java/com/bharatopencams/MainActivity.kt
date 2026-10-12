@@ -36,6 +36,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -45,7 +46,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -76,6 +76,9 @@ class MainActivity : ComponentActivity() {
                         onOpenSource = { feed ->
                             // Open the publisher's official page; the app does not proxy or record streams.
                             openExternalUrl(feed.sourcePageUrl)
+                        },
+                        onReportSource = {
+                            openExternalUrl("https://github.com/vikasdocker/Bharat-Open-Cams/issues/new?template=feed-removal.yml")
                         }
                     )
                 }
@@ -94,7 +97,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun DirectoryScreen(
     onSuggestSource: () -> Unit,
-    onOpenSource: (CameraFeed) -> Unit
+    onOpenSource: (CameraFeed) -> Unit,
+    onReportSource: (CameraFeed) -> Unit
 ) {
     var query by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf("All") }
@@ -274,7 +278,11 @@ private fun DirectoryScreen(
                             letterSpacing = 1.4.sp
                         )
                         filteredFeeds.forEach { feed ->
-                            FeedCard(feed = feed, onOpen = { onOpenSource(feed) })
+                            FeedCard(
+                                feed = feed,
+                                onOpen = { onOpenSource(feed) },
+                                onReport = { onReportSource(feed) }
+                            )
                         }
                     }
                 }
@@ -360,7 +368,7 @@ private fun StatusCard(
 }
 
 @Composable
-private fun FeedCard(feed: CameraFeed, onOpen: () -> Unit) {
+private fun FeedCard(feed: CameraFeed, onOpen: () -> Unit, onReport: () -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
@@ -392,6 +400,12 @@ private fun FeedCard(feed: CameraFeed, onOpen: () -> Unit) {
                 ) {
                     Text("Open official view ↗", fontSize = 11.sp)
                 }
+            }
+            TextButton(
+                onClick = onReport,
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 0.dp, vertical = 0.dp)
+            ) {
+                Text("Report listing / request removal", color = Muted, fontSize = 10.sp)
             }
         }
     }

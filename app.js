@@ -96,7 +96,8 @@
       '<div class="feed-meta"><span aria-hidden="true">⌖</span><span>' + locationLabel + '</span></div>' +
       '<p class="feed-description">' + description + '</p>' +
       '<div class="feed-card-bottom"><span class="feed-publisher" title="' + publisher + '">Published by ' + publisher + '</span>' +
-      '<a class="feed-open" href="' + escapeHtml(source) + '" target="_blank" rel="noopener noreferrer">' + linkLabel + ' ↗</a></div></div></article>';
+      '<span class="feed-actions"><a class="feed-open" href="' + escapeHtml(source) + '" target="_blank" rel="noopener noreferrer">' + linkLabel + ' ↗</a>' +
+      '<a class="feed-report" href="https://github.com/vikasdocker/Bharat-Open-Cams/issues/new?template=feed-removal.yml" target="_blank" rel="noopener noreferrer">Report / remove</a></span></div></div></article>';
   }
 
   function render() {

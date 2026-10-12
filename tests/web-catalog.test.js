@@ -103,6 +103,7 @@ async function main() {
     assert.match(elements["feed-grid"].innerHTML, /https:\/\/kwschennai\.com\/keacam\.htm/);
     assert.doesNotMatch(elements["feed-grid"].innerHTML, /Private residential camera/);
     assert.equal(elements["feed-count"].textContent, "1");
+    assert.ok(elements["feed-grid"].innerHTML.includes("template=feed-removal.yml"));
     assert.equal(elements["feed-grid"].attributes["aria-busy"], "false");
 
     elements["search-input"].value = "Delhi";

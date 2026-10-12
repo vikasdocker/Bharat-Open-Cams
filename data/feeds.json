@@ -673,5 +673,55 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "india-opencctv-public-camera-directory",
+    "name": "India public camera directory — OpenCCTV.org",
+    "description": "Third-party index of publicly presented cameras around India, including some city, weather, nature and traffic views. Individual cameras may be offline or temporarily unavailable. Open the directory to browse current listings; this project links to the directory only and does not copy, embed, proxy, cache or record the underlying camera media.",
+    "publisher_name": "OpenCCTV.org — third-party public camera directory",
+    "publisher_url": "https://opencctv.org/",
+    "source_page_url": "https://opencctv.org/cameras/india",
+    "city": "India",
+    "area": "Multiple locations nationwide",
+    "category": "traffic",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://opencctv.org/cameras/india",
+      "terms_review_note": "Reviewed 2026-10-12: OpenCCTV.org intentionally publishes an India public-camera directory and describes its entries as feeds from transportation agencies, weather services and other public sources. This is a third-party directory link, not a government service or blanket permission to reuse any underlying feed. This project links only to the directory and does not copy, embed, proxy, cache or record camera images. Camera count/status can change and individual cameras may be offline; suspend if the operator objects or its terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "OpenCCTV.org — third-party public camera directory; check each entry's displayed source and status.",
+    "removal_contact_url": "https://opencctv.org/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "freecam-chennai-choolaimedu-high-road",
+    "name": "Chennai — Choolaimedu High Road public webcam",
+    "description": "A third-party public webcam page presents a street-level view of Choolaimedu High Road in Chennai and advertises automatic refresh. It can show a loading/offline state, so availability is not guaranteed. Open the viewing page on Freecam.ai; this directory does not embed, copy, cache, proxy or record the view.",
+    "publisher_name": "Freecam.ai — third-party public webcam page",
+    "publisher_url": "https://freecam.ai/",
+    "source_page_url": "https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/",
+    "city": "Chennai",
+    "area": "Choolaimedu High Road",
+    "category": "traffic",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/",
+      "terms_review_note": "Reviewed 2026-10-12: Freecam.ai intentionally presents a public webcam page titled for Chennai's Choolaimedu High Road, describes an automatic-refresh city view, and offers its own viewing interface. This entry links only to that third-party viewing page; no underlying media URL is extracted, and this project does not embed, copy, cache, proxy or record imagery. Freecam.ai is not the underlying camera owner unless its page says so; the link is subject to publisher/source rights, availability and removal requests.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Freecam.ai — third-party webcam viewing page for Choolaimedu High Road, Chennai.",
+    "removal_contact_url": "https://freecam.ai/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

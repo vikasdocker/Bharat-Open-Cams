@@ -18,6 +18,10 @@ Catalog entries describe public sources and their publisher, terms, attribution 
 
 Before adding user accounts, favorites sync, maps, push notifications, analytics, location-aware results, playback proxies or any backend, update this notice to describe actual data collection, purposes, retention, providers, security, user choices and contact/removal mechanisms. Request only the permissions essential to a feature and explain them in context.
 
+## Google sign-in and protected playback
+
+Google sign-in and protected playback are not currently implemented. Before adding them, document the identity provider, authentication events, account identifiers collected, abuse/security log fields, purpose, access permissions, retention periods, deletion/request path and incident contact. Avoid collecting full email addresses in watermarks or logs when a masked identifier suffices. A sign-in gate must be enforced by a backend, not only by website JavaScript.
+
 ## Contact and concerns
 
 Use the repository's Issues area for general project questions. Do not put personal information, credentials or private camera footage into a public issue. Use the repository's private vulnerability reporting feature if available for security concerns.

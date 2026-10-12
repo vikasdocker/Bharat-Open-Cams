@@ -28,3 +28,6 @@ node_modules/
 dist/
 coverage/
 .next/
+
+# Generated site output
+_site/

@@ -20,6 +20,6 @@ Then launch an Android Studio Gradle sync and assemble a debug build. Do not pub
 
 ## Current implementation
 
-The app downloads the public data/feeds.json catalog from the repository's main branch over HTTPS. Only items whose feed and authorization states are approved, whose publisher/source/terms links are HTTPS, and whose viewing method matches the declared permission scope are displayed. Search, city selection and category chips filter the catalog. Opening a feed launches its official source page in an external browser; the current MVP does not proxy, record, or embed video.
+The app downloads the public data/feeds.json catalog from the repository's main branch over HTTPS. Only items whose feed and authorization states are approved, whose publisher/source links are HTTPS, and whose viewing method matches the recorded permission scope are displayed. Separate terms URLs are mandatory for publisher-terms and explicit-public-license entries; a publisher-public-page entry is link-only. Search, city selection and category chips filter the catalog. Opening a feed launches its official source page in an external browser; the current MVP does not proxy, record, or embed video.
 
-The catalog is currently empty while camera source permissions are researched. The INTERNET permission is used for the catalog request; camera, location, microphone, contacts and storage permissions are not requested.
+The catalog has one link-only Chennai weather-webcam entry. It does not yet contain an approved road/traffic CCTV feed; those sources need an official public viewing route and reviewed permission. The INTERNET permission is used for the catalog request; camera, location, microphone, contacts and storage permissions are not requested.

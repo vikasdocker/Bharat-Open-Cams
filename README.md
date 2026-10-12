@@ -6,7 +6,7 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 
 ## Current status
 
-**MVP foundation in development.** The responsive web directory and native Android screen are implemented. Both clients read the shared public catalog; the Android client fetches it from the canonical GitHub raw URL over HTTPS, filters approved sources, and opens the publisher's official page. The catalog currently contains one Chennai weather-webcam listing approved for an outbound link to the publisher's own public page; it contains zero approved road/traffic CCTV feeds. The app does not copy, embed, proxy or record that publisher's images. GitHub Pages and Play Store are not yet published.
+**MVP foundation deployed; controlled viewing is still future work.** The responsive web directory and native Android client read the shared public catalog; Android fetches it from the canonical GitHub raw URL over HTTPS and opens each publisher's official page. The catalog currently contains nine approved link-only public pages across eight city/town labels: one Chennai weather webcam, one New Delhi AQI camera page, and seven official public-venue/live-darshan pages. It contains zero verified road/traffic CCTV feeds. The directory does not embed, copy, proxy, cache or record publisher media. GitHub Pages is deployed; Android is available as a debug build but is not published on Google Play. Google sign-in and backend-enforced protected playback are not yet implemented.
 
 ## What is included
 
@@ -32,6 +32,7 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 - [Privacy notice](docs/PRIVACY.md)
 - [Terms of use](docs/TERMS.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [Viewer access and anti-abuse architecture](docs/SECURITY_ARCHITECTURE.md)
 - [Source research register](docs/SOURCE_RESEARCH.md)
 - [Permission request template](docs/OUTREACH_TEMPLATE.md)
 - [Machine-readable source candidates](data/source-candidates.json)
@@ -47,7 +48,7 @@ Use a local HTTP server so the browser can load the JSON catalog:
 
     python -m http.server 8000
 
-Then open http://localhost:8000. The catalog currently contains one approved link-only Chennai weather-webcam page; road/traffic CCTV remains empty until an official public viewing route and permitted use are verified. The website reads this same file locally.
+Then open http://localhost:8000. The catalog currently contains nine approved link-only source pages, while road/traffic CCTV remains empty until an official public viewing route and permitted use are verified. The website reads this same file locally.
 
 ## Android setup
 

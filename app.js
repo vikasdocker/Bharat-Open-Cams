@@ -6,6 +6,8 @@
   var searchInput = document.getElementById("search-input");
   var cityFilter = document.getElementById("city-filter");
   var categoryFilter = document.getElementById("category-filter");
+  var liveGrid = document.getElementById("live-wall");
+  var liveCount = document.getElementById("live-count");
   var feeds = [];
 
   document.getElementById("current-year").textContent = String(new Date().getFullYear());
@@ -23,6 +25,34 @@
     } catch (error) {
       return "";
     }
+  }
+
+  // Only provider-hosted embed URLs are allowed in auto-play players. Never iframe
+  // a publisher's whole website or accept arbitrary URLs from catalog data.
+  function safeEmbedUrl(value) {
+    try {
+      var parsed = new URL(String(value || ""));
+      if (parsed.protocol !== "https:") return "";
+      var host = parsed.hostname.toLowerCase();
+      var youtubeHost = host === "youtube.com" || host === "www.youtube.com" ||
+        host === "youtube-nocookie.com" || host === "www.youtube-nocookie.com";
+      var youtubeParts = parsed.pathname.split("/");
+      if (youtubeHost && youtubeParts.length === 3 && youtubeParts[1] === "embed" && /^[A-Za-z0-9_-]{6,}$/.test(youtubeParts[2])) return parsed.href;
+      var vimeoParts = parsed.pathname.split("/");
+      if (host === "player.vimeo.com" && vimeoParts.length === 3 && vimeoParts[1] === "video" && /^[0-9]+$/.test(vimeoParts[2])) return parsed.href;
+      return "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function autoplayEmbedUrl(value) {
+    var parsed = new URL(safeEmbedUrl(value));
+    parsed.searchParams.set("autoplay", "1");
+    parsed.searchParams.set("mute", "1");
+    parsed.searchParams.set("playsinline", "1");
+    if (parsed.hostname.indexOf("youtube") !== -1) parsed.searchParams.set("rel", "0");
+    return parsed.href;
   }
 
   function labelForCategory(category) {
@@ -56,6 +86,7 @@
       if (["link-only", "embedding", "redistribution"].indexOf(scope) === -1) return false;
       if (method === "approved-embed" && ["embedding", "redistribution"].indexOf(scope) === -1) return false;
       if (method === "approved-stream" && scope !== "redistribution") return false;
+      if (method === "approved-embed" && !safeEmbedUrl(feed.viewing_url)) return false;
       if (authorizationType === "publisher-public-page" &&
           (method !== "official-link" || scope !== "link-only" || Object.prototype.hasOwnProperty.call(feed, "viewing_url"))) return false;
       return true;
@@ -112,6 +143,37 @@
       '<a class="feed-report" href="https://github.com/vikasdocker/Bharat-Open-Cams/issues/new?template=feed-removal.yml" target="_blank" rel="noopener noreferrer">Report / remove</a></span></div></div></article>';
   }
 
+  function renderLiveWall(items) {
+    var liveFeeds = items.filter(function (feed) {
+      return feed.viewing_method === "approved-embed" &&
+        safeEmbedUrl(feed.viewing_url) &&
+        feed.authorization && feed.authorization.status === "approved";
+    });
+    liveCount.textContent = String(liveFeeds.length);
+    liveGrid.setAttribute("aria-busy", "false");
+
+    if (!liveFeeds.length) {
+      liveGrid.innerHTML = '<div class="live-empty"><span class="live-empty-icon" aria-hidden="true">↗</span><div><h3>No auto-play stream is verified yet</h3><p>The current catalog contains public source pages and directories, but no individual stream is approved for embedding. Those cameras remain available below and open on their publisher sites. A stream will appear here after its official embed and viewing permission are checked.</p><a class="text-link" href="https://github.com/vikasdocker/Bharat-Open-Cams/blob/main/docs/FEED_POLICY.md" target="_blank" rel="noreferrer">Read the viewing policy ↗</a></div></div>';
+      return;
+    }
+
+    liveGrid.innerHTML = liveFeeds.map(function (feed, index) {
+      var name = escapeHtml(feed.name);
+      var city = escapeHtml(feed.city);
+      var area = escapeHtml(feed.area || "");
+      var publisher = escapeHtml(feed.publisher_name);
+      var loading = index < 2 ? "eager" : "lazy";
+      var embedUrl = escapeHtml(autoplayEmbedUrl(feed.viewing_url));
+      var publisherUrl = escapeHtml(safeHttpsUrl(feed.source_page_url));
+      var label = area ? city + " · " + area : city;
+      return '<article class="live-card">' +
+        '<div class="live-card-heading"><div><span class="live-stream-label"><span class="live-pulse" aria-hidden="true"></span> AUTO-PLAY · MUTED</span><h3>' + name + '</h3><p>' + label + ' · Published by ' + publisher + '</p></div></div>' +
+        '<div class="live-player"><iframe src="' + embedUrl + '" title="' + name + '" loading="' + loading + '" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>' +
+        '<div class="live-card-footer"><span>Playback and availability are controlled by the publisher.</span><a href="' + publisherUrl + '" target="_blank" rel="noopener noreferrer">Publisher page ↗</a></div>' +
+        '</article>';
+    }).join("");
+  }
+
   function render() {
     var query = searchInput.value.trim().toLocaleLowerCase();
     var city = cityFilter.value;
@@ -150,9 +212,11 @@
       if (!Array.isArray(catalog)) throw new Error("Catalog must be an array");
       feeds = approvedFeeds(catalog);
       addCityOptions(feeds);
+      renderLiveWall(feeds);
       render();
     })
     .catch(function () {
+      renderLiveWall([]);
       renderEmpty("The catalog could not be loaded", "Please try refreshing the page. The directory will not invent camera listings when its verified catalog is unavailable.", "View project status", "https://github.com/vikasdocker/Bharat-Open-Cams");
       feedGrid.setAttribute("aria-busy", "false");
       countNode.textContent = "—";

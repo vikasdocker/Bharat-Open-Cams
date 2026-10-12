@@ -49,7 +49,8 @@ function approvedPage(id, overrides = {}) {
 async function launchWith(catalog) {
   const ids = [
     "feed-grid", "feed-count", "search-input",
-    "city-filter", "category-filter", "directory-note", "current-year"
+    "city-filter", "category-filter", "directory-note", "current-year",
+    "live-wall", "live-count"
   ];
   const elements = Object.fromEntries(ids.map(id => [id, makeElement()]));
   const document = {
@@ -124,13 +125,54 @@ async function main() {
   }
 
   {
+    const embeddable = approvedPage("official-live-stream", {
+      id: "official-live-stream",
+      name: "Official public live stream",
+      publisher_name: "Example broadcaster",
+      publisher_url: "https://example.org/",
+      source_page_url: "https://example.org/live",
+      viewing_method: "approved-embed",
+      viewing_url: "https://www.youtube.com/embed/AbCdEf12345",
+      terms_url: "https://www.youtube.com/t/terms",
+      authorization: {
+        status: "approved",
+        authorization_type: "publisher-terms",
+        reuse_scope: "embedding",
+        evidence_reference: "https://example.org/live",
+        terms_review_note: "The publisher page intentionally displays this stream using the provider-hosted embedded player."
+      }
+    });
+    const unsafeEmbed = approvedPage("untrusted-embed", {
+      name: "Untrusted embed",
+      viewing_method: "approved-embed",
+      viewing_url: "https://unknown-camera.example/stream",
+      terms_url: "https://example.org/terms",
+      authorization: {
+        status: "approved",
+        authorization_type: "publisher-terms",
+        reuse_scope: "embedding",
+        evidence_reference: "https://example.org/live",
+        terms_review_note: "This entry should fail the provider allow-list and never create an iframe."
+      }
+    });
+    const elements = await launchWith([embeddable, unsafeEmbed]);
+    assert.equal(elements["live-count"].textContent, "1");
+    assert.match(elements["live-wall"].innerHTML, /Official public live stream/);
+    assert.match(elements["live-wall"].innerHTML, /autoplay=1/);
+    assert.match(elements["live-wall"].innerHTML, /mute=1/);
+    assert.match(elements["live-wall"].innerHTML, /allow="autoplay;/);
+    assert.doesNotMatch(elements["live-wall"].innerHTML, /unknown-camera/);
+    assert.doesNotMatch(elements["live-wall"].innerHTML, /Untrusted embed/);
+  }
+
+  {
     const elements = await launchWith({ not: "an array" });
     assert.match(elements["feed-grid"].innerHTML, /The catalog could not be loaded/);
     assert.equal(elements["feed-grid"].attributes["aria-busy"], "false");
     assert.equal(elements["feed-count"].textContent, "—");
   }
 
-  process.stdout.write("Web catalog tests passed: approval filters, link-only boundary, search, and failure state.\n");
+  process.stdout.write("Web catalog tests passed: approval filters, provider allow-list, muted autoplay, link-only boundary, search, and failure state.\n");
 }
 
 main().catch(error => {

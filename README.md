@@ -33,6 +33,7 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 - [Terms of use](docs/TERMS.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Source research register](docs/SOURCE_RESEARCH.md)
+- [Permission request template](docs/OUTREACH_TEMPLATE.md)
 - [Machine-readable source candidates](data/source-candidates.json)
 - [Web deployment](docs/WEB_DEPLOYMENT.md)
 - [Contribution workflow](CONTRIBUTING.md)

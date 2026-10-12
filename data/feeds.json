@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "id": "kea-weather-station-chennai",
+    "name": "KeaCam — Chennai weather-station webcams",
+    "description": "KeaWeather publishes three outdoor views (West, South-East and North-East). Its About Us page says still images upload every 3–5 minutes. This entry opens the publisher's page only; the app does not copy, embed, proxy or record the images.",
+    "publisher_name": "KeaWeather / KWS Chennai",
+    "publisher_url": "https://kwschennai.com/",
+    "source_page_url": "https://kwschennai.com/keacam.htm",
+    "city": "Chennai",
+    "area": "Nungambakkam weather station",
+    "category": "weather",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://kwschennai.com/keacam.htm",
+      "terms_review_note": "Reviewed 2026-10-12: the publisher intentionally displays its own public KeaCam page with three outdoor webcam views, and its About Us page describes the publisher-installed camera. This listing contains metadata and an outbound link only; no imagery is copied, embedded, cached, proxied, or recorded. No separate media licence/terms page was located, so approval is limited to linking to the canonical public page and must be suspended if the publisher objects or the page terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "KeaWeather / KWS Chennai — open the publisher's official KeaCam page.",
+    "removal_contact_url": "https://kwschennai.com/about.htm",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  }
+]

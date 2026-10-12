@@ -88,6 +88,11 @@ async function main() {
         evidence_reference: "https://kwschennai.com/keacam.htm"
       }
     });
+    const nationwideHub = approvedPage("india-wide-camera-map", {
+      name: "India-wide public camera map",
+      city: "India",
+      category: "traffic"
+    });
     const directMediaUrlOnPublicPage = approvedPage("bad-direct-url", {
       viewing_url: "https://kwschennai.com/not-approved-image.jpg"
     });
@@ -101,12 +106,14 @@ async function main() {
         terms_review_note: "Publisher page reviewed; this is only a public link."
       }
     });
-    const elements = await launchWith([good, pending, missingReview, embeddedWithoutPermission, directMediaUrlOnPublicPage]);
+    const elements = await launchWith([good, pending, missingReview, embeddedWithoutPermission, directMediaUrlOnPublicPage, nationwideHub]);
     assert.match(elements["feed-grid"].innerHTML, /Chennai weather station webcam/);
+    assert.match(elements["feed-grid"].innerHTML, /India-wide public camera map/);
+    assert.ok(elements["feed-grid"].innerHTML.indexOf("India-wide public camera map") < elements["feed-grid"].innerHTML.indexOf("Chennai weather station webcam"));
     assert.match(elements["feed-grid"].innerHTML, /https:\/\/kwschennai\.com\/keacam\.htm/);
     assert.doesNotMatch(elements["feed-grid"].innerHTML, /Private residential camera/);
     assert.doesNotMatch(elements["feed-grid"].innerHTML, /not-approved-image\.jpg/);
-    assert.equal(elements["feed-count"].textContent, "1");
+    assert.equal(elements["feed-count"].textContent, "2");
     assert.ok(elements["feed-grid"].innerHTML.includes("template=feed-removal.yml"));
     assert.equal(elements["feed-grid"].attributes["aria-busy"], "false");
 

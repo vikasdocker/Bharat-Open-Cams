@@ -27,6 +27,12 @@ This is a narrow directory-link exception, **not a licence to reuse the picture 
 
 For embedding, direct stream integration, caching or redistribution, a public page alone is not enough. The publisher's terms, an explicit public licence, or written permission must cover that specific use. Direct streams require explicit redistribution permission.
 
+### Third-party public camera-map directories
+
+A directory hub or an individual camera-view page operated by a third-party aggregator may be listed as a **link-only third-party entry**, not as a claim that Bharat Open Cams owns or has redistribution rights to the underlying camera, when the operator intentionally publishes a public viewing page and ordinary linking is not prohibited. The card and description must clearly label it as a third-party directory rather than an official government service. Do not copy thumbnails, scrape individual camera records, extract media URLs, or embed/proxy/cache/record the underlying streams. A directory's claim that a camera is public is not blanket permission for Bharat Open Cams to reuse that camera; the viewer should follow the operator's cited source and terms. Directory counts and availability are dynamic and must not be presented as guaranteed.
+
+A government tourism directory that intentionally offers public livestream links may also be listed as link-only navigation. Its own policy and each content provider's terms still govern the stream. Do not load such portals in frames or reuse their media unless permission explicitly permits it.
+
 ## Not acceptable
 - Residential buildings, private homes, apartment corridors, neighborhood/security cameras or personal doorbells without explicit authorization for public publication.
 - Feeds found by IP-range scanning, port scanning, search-engine dorking, exposed-device databases, or scraping lists of unsecured cameras.

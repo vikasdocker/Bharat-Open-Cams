@@ -106,7 +106,11 @@ object FeedCatalogRepository {
                 verifiedAt = item.optString("verified_at")
             )
         }
-        return approved.distinctBy { it.id }.sortedWith(compareBy<CameraFeed> { it.city }.thenBy { it.name })
+        return approved.distinctBy { it.id }.sortedWith(
+            compareBy<CameraFeed> { if (it.id.startsWith("india-")) 0 else 1 }
+                .thenBy { it.city }
+                .thenBy { it.name }
+        )
     }
     private fun httpsUrl(value: String): String? {
         val uri = runCatching { android.net.Uri.parse(value) }.getOrNull() ?: return null

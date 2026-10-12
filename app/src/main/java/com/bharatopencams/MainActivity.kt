@@ -4,6 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.WindowManager
+import android.webkit.WebResourceRequest
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -53,6 +57,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -137,6 +142,7 @@ private fun DirectoryScreen(
         val matchesCategory = selectedCategory == "All" || feed.categoryLabel == selectedCategory
         matchesQuery && matchesCity && matchesCategory
     }
+    val liveFeeds = feeds.filter { it.viewingMethod == "approved-embed" && it.viewingUrl != null }
 
     Scaffold(
         containerColor = Paper,
@@ -183,6 +189,36 @@ private fun DirectoryScreen(
                     fontSize = 14.sp,
                     lineHeight = 22.sp
                 )
+            }
+
+            if (liveFeeds.isNotEmpty()) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text("LIVE WATCH", color = Forest, fontSize = 10.sp, letterSpacing = 1.5.sp, fontWeight = FontWeight.ExtraBold)
+                            Text("Public road-camera views", color = Ink, fontSize = 21.sp, fontWeight = FontWeight.Bold)
+                        }
+                        Surface(color = PaleGreen, shape = RoundedCornerShape(50)) {
+                            Text("${liveFeeds.size} viewers", color = ForestDark, fontSize = 10.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 10.dp, vertical = 7.dp))
+                        }
+                    }
+                    Text(
+                        "Views are hosted by OpenCCTV. Some update as still images every few minutes and may show offline status; continuous video is not guaranteed.",
+                        color = Muted,
+                        fontSize = 12.sp,
+                        lineHeight = 18.sp
+                    )
+                    liveFeeds.forEach { feed ->
+                        LiveCameraCard(
+                            feed = feed,
+                            onOpenSource = { onOpenSource(feed) }
+                        )
+                    }
+                }
             }
 
             OutlinedTextField(
@@ -366,6 +402,102 @@ private fun StatusCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(actionLabel, modifier = Modifier.padding(vertical = 4.dp))
+            }
+        }
+    }
+}
+
+private fun isAllowedOpenCctvViewer(value: String): Boolean {
+    val uri = runCatching { Uri.parse(value) }.getOrNull() ?: return false
+    val path = uri.path.orEmpty()
+    return uri.scheme == "https" &&
+        uri.host == "opencctv.org" &&
+        uri.query == null &&
+        uri.fragment == null &&
+        Regex("^/cameras/india/[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+-\\d{4,}$").matches(path)
+}
+
+@Composable
+private fun LiveCameraCard(feed: CameraFeed, onOpenSource: () -> Unit) {
+    val viewerUrl = feed.viewingUrl ?: return
+    if (!isAllowedOpenCctvViewer(viewerUrl)) return
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Border)
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 13.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text("PUBLIC ROAD CAMERA", color = Forest, fontSize = 9.sp, letterSpacing = 1.2.sp, fontWeight = FontWeight.ExtraBold)
+                Text(feed.name, color = Ink, fontSize = 15.sp, lineHeight = 20.sp, fontWeight = FontWeight.Bold)
+                Text(listOfNotNull(feed.city, feed.area.takeIf { it.isNotBlank() }).distinct().joinToString(" · "), color = Muted, fontSize = 10.sp)
+            }
+            AndroidView(
+                modifier = Modifier.fillMaxWidth().height(230.dp).background(Color(0xFF101713)),
+                factory = { context ->
+                    WebView(context).apply {
+                        tag = viewerUrl
+                        setBackgroundColor(android.graphics.Color.rgb(16, 23, 19))
+                        settings.javaScriptEnabled = true
+                        settings.domStorageEnabled = true
+                        settings.allowFileAccess = false
+                        settings.allowContentAccess = false
+                        settings.javaScriptCanOpenWindowsAutomatically = false
+                        settings.setSupportMultipleWindows(false)
+                        settings.mediaPlaybackRequiresUserGesture = true
+                        settings.mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
+                        settings.cacheMode = WebSettings.LOAD_NO_CACHE
+                        settings.safeBrowsingEnabled = true
+                        webViewClient = object : WebViewClient() {
+                            override fun shouldOverrideUrlLoading(
+                                view: WebView?,
+                                request: WebResourceRequest?
+                            ): Boolean {
+                                if (request == null) return true
+                                if (!request.isForMainFrame) return false
+                                val target = request.url.toString()
+                                if (isAllowedOpenCctvViewer(target)) return false
+
+                                val uri = request.url
+                                if (uri.scheme == "https" && !uri.host.isNullOrBlank()) {
+                                    runCatching {
+                                        context.startActivity(Intent(Intent.ACTION_VIEW, uri))
+                                    }
+                                }
+                                return true
+                            }
+                        }
+                        loadUrl(viewerUrl)
+                    }
+                },
+                update = { webView ->
+                    if (webView.tag != viewerUrl) {
+                        webView.tag = viewerUrl
+                        webView.loadUrl(viewerUrl)
+                    }
+                }
+            )
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 10.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text(
+                    "Viewer is provided by OpenCCTV; refresh and availability are controlled by the source.",
+                    color = Muted,
+                    fontSize = 10.sp,
+                    lineHeight = 15.sp
+                )
+                TextButton(
+                    onClick = onOpenSource,
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 0.dp, vertical = 0.dp)
+                ) {
+                    Text("Open full source page ↗", color = ForestDark, fontSize = 11.sp)
+                }
             }
         }
     }

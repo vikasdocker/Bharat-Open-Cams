@@ -61,7 +61,8 @@ object FeedCatalogRepository {
                     "publisher-terms",
                     "written-permission",
                     "explicit-public-license",
-                    "publisher-public-page"
+                    "publisher-public-page",
+                    "publisher-embed-feature"
                 )
             ) continue
             if (authorizationType in setOf("publisher-terms", "explicit-public-license") && termsUrl == null) continue
@@ -70,9 +71,28 @@ object FeedCatalogRepository {
             if (reuseScope !in setOf("link-only", "embedding", "redistribution")) continue
 
             val viewingMethod = item.optString("viewing_method")
+            val viewingUrl = httpsUrl(item.optString("viewing_url"))
             if (viewingMethod !in setOf("official-link", "approved-embed", "approved-stream")) continue
             if (viewingMethod == "approved-embed" && reuseScope !in setOf("embedding", "redistribution")) continue
             if (viewingMethod == "approved-stream" && reuseScope != "redistribution") continue
+            // This app currently supports only the three reviewed OpenCCTV viewer wrappers.
+            // Do not accept arbitrary iframe hosts or raw upstream media URLs from the catalog.
+            if (authorizationType == "publisher-embed-feature") {
+                val viewerUri = runCatching { android.net.Uri.parse(viewingUrl ?: "") }.getOrNull()
+                val validPath = Regex("^/cameras/india/[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+-\\d{4,}$")
+                    .matches(viewerUri?.path.orEmpty())
+                if (viewingMethod != "approved-embed" ||
+                    reuseScope != "embedding" ||
+                    viewingUrl == null ||
+                    viewingUrl != sourcePageUrl ||
+                    viewerUri == null ||
+                    viewerUri.scheme != "https" ||
+                    viewerUri.host != "opencctv.org" ||
+                    viewerUri.query != null ||
+                    viewerUri.fragment != null ||
+                    !validPath
+                ) continue
+            }
             if (authorizationType == "publisher-public-page" &&
                 (viewingMethod != "official-link" || reuseScope != "link-only" || item.has("viewing_url"))
             ) continue
@@ -95,6 +115,7 @@ object FeedCatalogRepository {
                 publisherName = publisher,
                 publisherUrl = publisherUrl,
                 sourcePageUrl = sourcePageUrl,
+                viewingUrl = if (authorizationType == "publisher-embed-feature") viewingUrl else null,
                 termsUrl = termsUrl,
                 termsReviewNote = termsReviewNote,
                 city = city,
@@ -125,6 +146,7 @@ data class CameraFeed(
     val publisherName: String,
     val publisherUrl: String,
     val sourcePageUrl: String,
+    val viewingUrl: String?,
     val termsUrl: String?,
     val termsReviewNote: String,
     val city: String,

@@ -23,5 +23,55 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "aqi-camera-new-delhi",
+    "name": "AQI Camera — New Delhi public city view",
+    "description": "AQI.in's public AQI Camera page presents a New Delhi city live-view/camera experience alongside air-quality and weather information. Availability and player presentation may vary; open the publisher's page. This listing links only and does not embed, copy, cache, proxy or record media.",
+    "publisher_name": "AQI.in",
+    "publisher_url": "https://www.aqi.in/",
+    "source_page_url": "https://www.aqi.in/in/aqi-camera",
+    "city": "New Delhi",
+    "area": "City view / air-quality weather context",
+    "category": "environment",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://www.aqi.in/in/aqi-camera",
+      "terms_review_note": "Reviewed 2026-10-12: AQI.in's own public HTTPS page is explicitly titled 'AQI Camera – City Live Streaming Video of Air Quality & Weather' and presents a New Delhi panel. The listing links only to this canonical page; it does not extract/iframe the media, copy images, proxy, cache or record video. No separate media reuse permission was established, so approval is link-only and subject to suspension if the publisher objects or terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "AQI.in — open the publisher's official AQI Camera page.",
+    "removal_contact_url": "https://www.aqi.in/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "mumbadevi-mandir-mumbai-live-darshan",
+    "name": "Shree Mumbadevi Mandir — Live Darshan",
+    "description": "The temple's official website offers three Live Darshan views; streams may show as paused outside their active schedule. This listing opens the temple's canonical page only and does not embed, copy, proxy, cache or record video.",
+    "publisher_name": "Shree Mumbadevi Mandir Charities",
+    "publisher_url": "https://mumbadevi.org.in/",
+    "source_page_url": "https://mumbadevi.org.in/",
+    "city": "Mumbai",
+    "area": "Zaveri Bazaar",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://mumbadevi.org.in/",
+      "terms_review_note": "Reviewed 2026-10-12: the temple's own public HTTPS home page explicitly offers online darshan/live streaming and lists its darshan views, reporting paused availability when streams are inactive. The catalog entry links only to that canonical publisher page; no media is copied, embedded, proxied, cached or recorded. No separate media-reuse terms were located, so approval is limited to ordinary linking and must be suspended if the operator objects or terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shree Mumbadevi Mandir Charities — open the official temple page for Live Darshan.",
+    "removal_contact_url": "https://mumbadevi.org.in/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

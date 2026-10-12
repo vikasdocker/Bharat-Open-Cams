@@ -73,5 +73,30 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "shirdi-saibaba-official-live-darshan",
+    "name": "Shree Saibaba Samadhi Mandir — Official Live Darshan",
+    "description": "The Trust's official website provides the real-time official Live Darshan entry for Shirdi's Samadhi Mandir. Use the publisher's own page; availability is controlled by the Trust. This listing does not embed, copy, cache, proxy or record video.",
+    "publisher_name": "Shree Saibaba Sansthan Trust, Shirdi",
+    "publisher_url": "https://www.sai.org.in/en",
+    "source_page_url": "https://www.sai.org.in/en",
+    "city": "Shirdi",
+    "area": "Samadhi Mandir",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://www.sai.org.in/en",
+      "terms_review_note": "Reviewed 2026-10-12: the Trust's official HTTPS site expressly provides a 'Real Time Official Live Darshan' link and warns users against unauthorized third-party streams. This catalog entry links only to the Trust's canonical page; no media is embedded, extracted, copied, proxied, cached or recorded. Approval is limited to an outbound link; suspend if the Trust objects or its page/terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shree Saibaba Sansthan Trust, Shirdi — use the official Live Darshan link.",
+    "removal_contact_url": "https://www.sai.org.in/en",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

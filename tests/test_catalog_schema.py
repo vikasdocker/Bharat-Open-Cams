@@ -26,6 +26,7 @@ VALID_APPROVED_FEED = {
         "authorization_type": "publisher-terms",
         "reuse_scope": "link-only",
         "evidence_reference": "https://city.example.gov/terms",
+        "terms_review_note": "Reviewed terms permit this official outbound source link and attribution.",
         "reviewer": "maintainer"
     },
     "attribution": "Source: Example City Authority",
@@ -50,6 +51,23 @@ class CatalogSchemaTests(unittest.TestCase):
         feed = copy.deepcopy(VALID_APPROVED_FEED)
         feed["authorization"]["status"] = "pending"
         self.assertTrue(self.errors(feed), "An approved listing must have approved authorization evidence.")
+
+
+    def test_public_publisher_page_can_be_linked_without_rehosting_terms(self):
+        feed = copy.deepcopy(VALID_APPROVED_FEED)
+        feed["authorization"]["authorization_type"] = "publisher-public-page"
+        feed["authorization"]["evidence_reference"] = "https://city.example.gov/public-camera"
+        feed["authorization"]["terms_review_note"] = "Publisher intentionally presents this webcam on a public page; our app links to it only."
+        del feed["terms_url"]
+        self.assertEqual(self.errors(feed), [])
+
+    def test_public_page_approval_cannot_be_used_for_embedding(self):
+        feed = copy.deepcopy(VALID_APPROVED_FEED)
+        feed["authorization"]["authorization_type"] = "publisher-public-page"
+        feed["authorization"]["terms_review_note"] = "Public canonical page reviewed; outbound-link use only."
+        feed["viewing_method"] = "approved-embed"
+        feed["authorization"]["reuse_scope"] = "embedding"
+        self.assertTrue(self.errors(feed), "Publisher-public-page approval must remain link-only.")
 
     def test_non_https_publisher_is_rejected(self):
         feed = copy.deepcopy(VALID_APPROVED_FEED)

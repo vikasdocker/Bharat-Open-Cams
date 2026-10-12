@@ -59,6 +59,12 @@
       if (authorizationType === "publisher-public-page" &&
           (method !== "official-link" || scope !== "link-only" || Object.prototype.hasOwnProperty.call(feed, "viewing_url"))) return false;
       return true;
+    }).sort(function (a, b) {
+      var nationwideA = String(a.id || "").indexOf("india-") === 0;
+      var nationwideB = String(b.id || "").indexOf("india-") === 0;
+      if (nationwideA !== nationwideB) return nationwideA ? -1 : 1;
+      var cityOrder = String(a.city || "").localeCompare(String(b.city || ""));
+      return cityOrder || String(a.name || "").localeCompare(String(b.name || ""));
     });
   }
   function addCityOptions(items) {

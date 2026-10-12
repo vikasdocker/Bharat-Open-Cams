@@ -29,6 +29,10 @@ jobs:
           set +o pipefail
           yes | "$sdkmanager_path" --licenses
           "$sdkmanager_path" "platforms;android-37.0" "build-tools;36.0.0"
+          # Some Gradle SDK resolvers still look for android-37 instead of the published android-37.0 directory.
+          if [[ -d "$ANDROID_HOME/platforms/android-37.0" && ! -e "$ANDROID_HOME/platforms/android-37" ]]; then
+            ln -s android-37.0 "$ANDROID_HOME/platforms/android-37"
+          fi
       - name: Download and verify Gradle 9.6.0
         run: |
           set -euo pipefail

@@ -47,4 +47,4 @@ The Android app can set WindowManager.LayoutParams.FLAG_SECURE on its own activi
 
 ## 7. Current status
 
-The current MVP is **not** behind Google sign-in and has no protected camera player. The catalog currently has one approved Chennai weather-webcam page under link-only scope and zero verified public road/traffic CCTV feeds. The Android flag, if applied, protects only the app's own window, not the external source page. Production authentication requires an identity-provider configuration plus a backend; no credentials should be committed to this repository.
+The current MVP is **not** behind Google sign-in and has no protected camera player. The catalog currently has one approved Chennai weather-webcam page under link-only scope and zero verified public road/traffic CCTV feeds. The Android app sets FLAG_SECURE on its own activity; this protects only the app's own window, not the external source page. Production authentication requires an identity-provider configuration plus a backend; no credentials should be committed to this repository.

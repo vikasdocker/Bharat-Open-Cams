@@ -98,5 +98,55 @@
     "status": "approved",
     "verified_at": "2026-10-12",
     "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "iskcon-delhi-official-live-darshan",
+    "name": "ISKCON Delhi — Live Darshan",
+    "description": "ISKCON Delhi's official Live Darshan page publishes viewing time windows and a live-view player. Availability follows the temple's displayed schedule. This directory opens the source page only and does not embed, copy, cache, proxy or record its media.",
+    "publisher_name": "ISKCON Delhi",
+    "publisher_url": "https://www.iskcondelhi.com/",
+    "source_page_url": "https://www.iskcondelhi.com/live-darshan/",
+    "city": "New Delhi",
+    "area": "Hare Krishna Hills, East of Kailash",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://www.iskcondelhi.com/live-darshan/",
+      "terms_review_note": "Reviewed 2026-10-12: the official ISKCON Delhi HTTPS Live Darshan page has a 'View Live' entry, a player/iframe, and published viewing time windows. This directory links only to that canonical source page and does not embed, extract, copy, proxy, cache or record the stream. Approval is limited to ordinary linking; suspend if the publisher objects or source terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "ISKCON Delhi — open the temple's official Live Darshan page.",
+    "removal_contact_url": "https://www.iskcondelhi.com/contact-us/",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
+  },
+  {
+    "id": "vitthal-rukmini-pandharpur-live-darshan",
+    "name": "Shri Vitthal Rukmini Temple — Live Darshan",
+    "description": "The temple's official Live Darshan page describes its public live stream for devotees. Stream availability is controlled by the temple. This listing links to the publisher's page only and does not embed, copy, cache, proxy or record video.",
+    "publisher_name": "Shri Vitthal Rukmini Mandir Samiti, Pandharpur",
+    "publisher_url": "https://vitthalrukminimandir.org/",
+    "source_page_url": "https://vitthalrukminimandir.org/live_darshan.php",
+    "city": "Pandharpur",
+    "area": "Shri Vitthal Rukmini Mandir",
+    "category": "public-venue",
+    "viewing_method": "official-link",
+    "authorization": {
+      "status": "approved",
+      "authorization_type": "publisher-public-page",
+      "reuse_scope": "link-only",
+      "evidence_reference": "https://vitthalrukminimandir.org/live_darshan.php",
+      "terms_review_note": "Reviewed 2026-10-12: the temple operator's official HTTPS Live Darshan page labels the player 'Shri Vitthal Rukmini Temple Live Darshan' and explicitly describes the public stream. This catalog entry links only to the canonical publisher page; no stream is embedded, extracted, copied, proxied, cached or recorded. Approval is limited to ordinary linking; suspend if the operator objects or page terms change.",
+      "reviewer": "maintainer"
+    },
+    "attribution": "Shri Vitthal Rukmini Mandir Samiti, Pandharpur — open the official Live Darshan page.",
+    "removal_contact_url": "https://vitthalrukminimandir.org/contactinfo.php",
+    "status": "approved",
+    "verified_at": "2026-10-12",
+    "review_due_at": "2026-11-12"
   }
 ]

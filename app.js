@@ -40,14 +40,25 @@
       if (youtubeHost && youtubeParts.length === 3 && youtubeParts[1] === "embed" && /^[A-Za-z0-9_-]{6,}$/.test(youtubeParts[2])) return parsed.href;
       var vimeoParts = parsed.pathname.split("/");
       if (host === "player.vimeo.com" && vimeoParts.length === 3 && vimeoParts[1] === "video" && /^[0-9]+$/.test(vimeoParts[2])) return parsed.href;
+      // OpenCCTV publishes an explicit iframe snippet for individual camera wrappers.
+      // Keep this allow-list narrow: only canonical India camera detail pages are accepted.
+      if (host === "opencctv.org" && !parsed.search && !parsed.hash &&
+          /^\/cameras\/india\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+-\d{4,}$/.test(parsed.pathname)) return parsed.href;
       return "";
     } catch (error) {
       return "";
     }
   }
 
+  function isOpenCctvEmbed(value) {
+    return safeEmbedUrl(value).indexOf("https://opencctv.org/cameras/india/") === 0;
+  }
+
   function autoplayEmbedUrl(value) {
     var parsed = new URL(safeEmbedUrl(value));
+    // OpenCCTV's copied iframe snippet is its full hosted viewer URL. Do not add
+    // undocumented query parameters to that URL; its image refresh is source-controlled.
+    if (parsed.hostname === "opencctv.org") return parsed.href;
     parsed.searchParams.set("autoplay", "1");
     parsed.searchParams.set("mute", "1");
     parsed.searchParams.set("playsinline", "1");
@@ -68,7 +79,7 @@
   }
 
   function approvedFeeds(items) {
-    var allowedAuthorizationTypes = ["publisher-terms", "written-permission", "explicit-public-license", "publisher-public-page"];
+    var allowedAuthorizationTypes = ["publisher-terms", "written-permission", "explicit-public-license", "publisher-public-page", "publisher-embed-feature"];
     var allowedViewingMethods = ["official-link", "approved-embed", "approved-stream"];
     return items.filter(function (feed) {
       if (!feed || feed.status !== "approved" || !feed.authorization) return false;
@@ -87,6 +98,9 @@
       if (method === "approved-embed" && ["embedding", "redistribution"].indexOf(scope) === -1) return false;
       if (method === "approved-stream" && scope !== "redistribution") return false;
       if (method === "approved-embed" && !safeEmbedUrl(feed.viewing_url)) return false;
+      if (authorizationType === "publisher-embed-feature" &&
+          (method !== "approved-embed" || scope !== "embedding" || !isOpenCctvEmbed(feed.viewing_url) ||
+           feed.viewing_url !== feed.source_page_url)) return false;
       if (authorizationType === "publisher-public-page" &&
           (method !== "official-link" || scope !== "link-only" || Object.prototype.hasOwnProperty.call(feed, "viewing_url"))) return false;
       return true;
@@ -166,10 +180,14 @@
       var embedUrl = escapeHtml(autoplayEmbedUrl(feed.viewing_url));
       var publisherUrl = escapeHtml(safeHttpsUrl(feed.source_page_url));
       var label = area ? city + " · " + area : city;
+      var playerLabel = isOpenCctvEmbed(feed.viewing_url) ? "PUBLIC CAMERA VIEW" : "AUTO-PLAY · MUTED";
+      var playbackNote = isOpenCctvEmbed(feed.viewing_url)
+        ? "Source-hosted camera viewer; refresh and availability are controlled by OpenCCTV and its upstream source."
+        : "Playback and availability are controlled by the publisher.";
       return '<article class="live-card">' +
-        '<div class="live-card-heading"><div><span class="live-stream-label"><span class="live-pulse" aria-hidden="true"></span> AUTO-PLAY · MUTED</span><h3>' + name + '</h3><p>' + label + ' · Published by ' + publisher + '</p></div></div>' +
+        '<div class="live-card-heading"><div><span class="live-stream-label"><span class="live-pulse" aria-hidden="true"></span> ' + playerLabel + '</span><h3>' + name + '</h3><p>' + label + ' · Published by ' + publisher + '</p></div></div>' +
         '<div class="live-player"><iframe src="' + embedUrl + '" title="' + name + '" loading="' + loading + '" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>' +
-        '<div class="live-card-footer"><span>Playback and availability are controlled by the publisher.</span><a href="' + publisherUrl + '" target="_blank" rel="noopener noreferrer">Publisher page ↗</a></div>' +
+        '<div class="live-card-footer"><span>' + playbackNote + '</span><a href="' + publisherUrl + '" target="_blank" rel="noopener noreferrer">Publisher page ↗</a></div>' +
         '</article>';
     }).join("");
   }

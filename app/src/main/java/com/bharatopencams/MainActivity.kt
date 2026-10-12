@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
                             openExternalUrl("https://github.com/vikasdocker/Bharat-Open-Cams/issues/new?template=feed-submission.yml")
                         },
                         onOpenSource = { feed ->
-                            // Open the publisher's official page; the app does not proxy or record streams.
+                            // Open the publisher's official page; the app does not proxy or record streams. Capture controls on that external page are outside this app's control.
                             openExternalUrl(feed.sourcePageUrl)
                         },
                         onReportSource = {
@@ -299,7 +299,7 @@ private fun DirectoryScreen(
                 Text("✓", color = ForestDark, fontSize = 19.sp, fontWeight = FontWeight.ExtraBold)
                 Column(modifier = Modifier.padding(start = 10.dp)) {
                     Text("Permission first", color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
-                    Text("The source's official page opens separately. No feeds are proxied or recorded.", color = Muted, fontSize = 11.sp, lineHeight = 17.sp)
+                    Text("The official source opens separately. Screenshot, recording and download controls on that page belong to its publisher; this app cannot enforce them there. FLAG_SECURE protects only this app window.", color = Muted, fontSize = 11.sp, lineHeight = 17.sp)
                 }
             }
 

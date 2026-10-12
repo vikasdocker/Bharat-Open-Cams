@@ -35,3 +35,4 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check app.js
+          node tests/web-catalog.test.js

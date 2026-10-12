@@ -38,19 +38,25 @@
   }
 
   function approvedFeeds(items) {
-    var allowedAuthorizationTypes = ["publisher-terms", "written-permission", "explicit-public-license"];
+    var allowedAuthorizationTypes = ["publisher-terms", "written-permission", "explicit-public-license", "publisher-public-page"];
     var allowedViewingMethods = ["official-link", "approved-embed", "approved-stream"];
     return items.filter(function (feed) {
       if (!feed || feed.status !== "approved" || !feed.authorization) return false;
       var auth = feed.authorization;
+      var authorizationType = auth.authorization_type;
+      var method = feed.viewing_method;
+      var scope = auth.reuse_scope;
       if (auth.status !== "approved") return false;
-      if (!safeHttpsUrl(feed.publisher_url) || !safeHttpsUrl(feed.source_page_url) || !safeHttpsUrl(feed.terms_url)) return false;
+      if (!safeHttpsUrl(feed.publisher_url) || !safeHttpsUrl(feed.source_page_url)) return false;
       if (typeof feed.publisher_name !== "string" || typeof feed.attribution !== "string" || !feed.attribution.trim()) return false;
-      if (!auth.evidence_reference || allowedAuthorizationTypes.indexOf(auth.authorization_type) === -1) return false;
-      if (allowedViewingMethods.indexOf(feed.viewing_method) === -1) return false;
-      if (["link-only", "embedding", "redistribution"].indexOf(auth.reuse_scope) === -1) return false;
-      if (feed.viewing_method === "approved-embed" && ["embedding", "redistribution"].indexOf(auth.reuse_scope) === -1) return false;
-      if (feed.viewing_method === "approved-stream" && auth.reuse_scope !== "redistribution") return false;
+      if (!auth.evidence_reference || typeof auth.terms_review_note !== "string" || auth.terms_review_note.trim().length < 20) return false;
+      if (allowedAuthorizationTypes.indexOf(authorizationType) === -1) return false;
+      if ((authorizationType === "publisher-terms" || authorizationType === "explicit-public-license") && !safeHttpsUrl(feed.terms_url)) return false;
+      if (allowedViewingMethods.indexOf(method) === -1) return false;
+      if (["link-only", "embedding", "redistribution"].indexOf(scope) === -1) return false;
+      if (method === "approved-embed" && ["embedding", "redistribution"].indexOf(scope) === -1) return false;
+      if (method === "approved-stream" && scope !== "redistribution") return false;
+      if (authorizationType === "publisher-public-page" && (method !== "official-link" || scope !== "link-only")) return false;
       return true;
     });
   }

@@ -6,7 +6,7 @@ A city-first directory for **officially authorized public camera feeds** in Indi
 
 ## Current status
 
-**MVP foundation deployed; controlled viewing is still future work.** The responsive web directory and native Android client read the shared public catalog; Android fetches it from the canonical GitHub raw URL over HTTPS and opens each publisher's official page. The catalog now contains 29 outbound-link entries: three nationwide discovery hubs plus 26 individual public source pages. The hubs link to ARGOS ATLAS's India public-camera map, OpenCCTV.org's public camera directory and the Ministry of Tourism's Utsav Live Darshan directory; 16 additional Utsav views and a Chennai street webcam have location-based cards. These improve nationwide discovery, but they are not 27 directly integrated CCTV streams. The project has zero individually verified road/traffic CCTV endpoints integrated into its own player. It does not embed, copy, proxy, cache or record publisher media. GitHub Pages is deployed; Android is available as a debug build but is not published on Google Play. Google sign-in and backend-enforced protected playback are not yet implemented.
+**MVP foundation deployed; controlled viewing is still future work.** The responsive web directory and native Android client read the shared public catalog; Android fetches it from the canonical GitHub raw URL over HTTPS and opens each publisher's official page. The catalog now contains 41 outbound-link entries: four nationwide discovery hubs plus 37 individual public source pages. The hubs link to ARGOS ATLAS, OpenCCTV.org, opencam.live and the Ministry of Tourism's Utsav Live Darshan directory. Individual cards cover public pages across India, including regional traffic/webcam listings and 23 public-venue Live Darshan pages. These links improve coverage, but they are not 41 streams directly integrated into our own player. The project has zero individually verified road/traffic CCTV endpoints integrated into its own player. It does not embed, copy, proxy, cache or record publisher media. GitHub Pages is deployed; Android is available as a debug build but is not published on Google Play. Google sign-in and backend-enforced protected playback are not yet implemented.
 
 ## What is included
 
@@ -48,7 +48,7 @@ Use a local HTTP server so the browser can load the JSON catalog:
 
     python -m http.server 8000
 
-Then open http://localhost:8000. The catalog currently contains 27 link-only entries, including nationwide directory hubs and public source pages across India. Individually integrated road/traffic CCTV remains empty until a public viewing route and permitted use are verified. The website reads this same file locally.
+Then open http://localhost:8000. The catalog currently contains 41 link-only entries, including four nationwide discovery hubs and individual public-source pages across India. Individually integrated road/traffic CCTV remains empty until a public viewing route and permitted use are verified. The website reads this same file locally.
 
 ## Android setup
 

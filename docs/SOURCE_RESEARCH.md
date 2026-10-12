@@ -1,10 +1,10 @@
 # India Source Research Register
 
 **Last researched:** 12 October 2026  
-**Individually verified road/traffic CCTV endpoints approved for direct integration:** 0.  
-**Catalog size:** 41 outbound-link entries (4 nationwide discovery hubs and 37 individual public-source pages).  
+**Underlying road/traffic media URLs directly integrated:** 0 (no source media URL is extracted or re-hosted).  
+**Catalog size:** 41 entries (4 nationwide discovery hubs and 37 individual public-source pages): 3 OpenCCTV-hosted camera-view wrappers approved for embedding, plus 38 link-only entries.  
 **Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. OpenCCTV.org's India directory reported 11 camera listings on the latest retrieved page, with individual status varying. The open-source opencam.live map can also be searched by region, although an India-only count was not verified. The open-source opencam.live map is also searchable by region; an India-only camera count was not verified. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
-**Important:** the ARGOS ATLAS entry is a third-party public camera-map directory, not a Government of India service; its individual camera sources/terms remain the authority cited by that operator. Utsav's Live Darshan items are public-venue livestreams, not road CCTV. All 41 current entries are link-only: Bharat Open Cams does not copy, extract, cache, proxy or record source media. The website now supports muted auto-play for future feeds with explicit embed approval and provider-hosted player URLs, but no individual stream currently qualifies, so the live wall remains empty until one is verified. Some live views may be schedule-dependent. The city/highway authority pages below remain research leads, not camera feeds; public reachability is not blanket permission to reuse media.
+**Important:** ARGOS ATLAS is a third-party public camera-map directory, not a Government of India service; individual source rights and availability remain with the camera owner. Utsav Live Darshan entries are public-venue streams, not road CCTV. Three OpenCCTV.org camera-detail pages now appear in Live Watch through their explicitly published iframe wrappers: Tiruvottiyur (Chennai), Guwahati, and Choolaimedu High Road (Chennai). The approval covers only OpenCCTV's viewer page—not underlying camera URLs, raw-media redistribution, copying, proxying, caching or recording. The remaining 38 entries are link-only. The wrapper can still show unavailable status, and some views are periodic still images rather than continuous video. City/highway authority systems below remain research leads, not public feeds; public reachability is not blanket permission to reuse media.
 
 ## Nationwide discovery hubs (link-only)
 
@@ -28,6 +28,16 @@ Public directory: https://utsav.gov.in/public/live-darshan
 Website policies: https://utsav.gov.in/website-policies
 
 Utsav describes its Live Darshan directory as a way to experience publicly presented destinations, rituals and spiritual experiences remotely; it showed 75 listings at review time. These are public-venue live streams, not street CCTV. The catalog links to the Utsav directory and selected individual Utsav pages only. It does not frame/embed Utsav, extract stream links, copy imagery, proxy or record video. Utsav's website policies apply, and stream availability/timings may change.
+
+## Public road-camera wrapper embeds
+
+These three camera-specific OpenCCTV.org pages display copyable iframe code for their own source-hosted viewers. Bharat Open Cams embeds the exact listed page, not an extracted upstream image/video endpoint. OpenCCTV lists periodic still-image refresh; actual feed status may be unavailable, stale, or change at any time.
+
+| Camera/location | Canonical camera-view wrapper | Notes |
+|---|---|---|
+| Chennai — Tiruvottiyur | https://opencctv.org/cameras/india/chennai-district/chennai/chennai-east-tiruvottiyur-313940 | Public traffic-camera page; source listing reports roughly 3-minute image refresh |
+| Guwahati, Assam | https://opencctv.org/cameras/india/assam/guwahati/guwahati-assam-306464 | Public traffic-camera page; reports a periodic still-image refresh; viewer may report Connecting/Feed unavailable |
+| Chennai — Choolaimedu High Road | https://opencctv.org/cameras/india/chennai-district/chennai/chennai-south-east-choolaimedu-high-road-302297 | Public road-camera page; replaces the duplicate Freecam.ai listing of this named road view so the catalog doesn't double-count the same location |
 
 ## Individual publisher pages
 
@@ -203,7 +213,7 @@ The official page publishes daily darshan times and a video player, but the revi
 
 ## Research conclusion
 
-The current catalog now has 41 outbound-link entries: four nationwide discovery hubs and 37 individual public source pages across India. The hubs link to ARGOS ATLAS, OpenCCTV.org, opencam.live and the Ministry of Tourism's Utsav Live Darshan directory. The individual entries include 23 Utsav live-darshan pages, several third-party public camera pages, weather/AQI views and temple/public-venue livestreams. These widen nationwide discovery, but are not 41 streams directly integrated into a Bharat Open Cams player. **No individually verified road/traffic CCTV endpoint is embedded or directly integrated by Bharat Open Cams yet.** Obtaining actual traffic-CCTV viewing endpoints requires official publisher confirmation and terms that authorize the exact viewing method.
+The catalog contains 41 entries: four nationwide discovery hubs and 37 individual public-source pages. Three individual road-camera pages (Tiruvottiyur, Guwahati, and Choolaimedu High Road) now load the OpenCCTV-hosted wrapper that the respective camera detail page explicitly offers for embedding. These are not direct or self-hosted source-media integrations; the viewer can be stale, offline, or show periodic still images. The remaining 38 entries are external links, including 23 Utsav Live Darshan pages, other public camera pages, weather/AQI views, and public-venue streams. Directly extracting or redistributing underlying traffic-camera streams remains out of scope. Continue official authority outreach for additional road cameras and only add new viewer wrappers after reviewing the exact published embed option and any owner restrictions.
 
 The next legitimate route for the road-CCTV goal is source-owner outreach:
 1. Ask official traffic/municipal authorities whether they publish public traffic webcams.
@@ -219,7 +229,10 @@ The next legitimate route for the road-CCTV goal is source-owner outreach:
 - opencam.live source methodology: https://opencam.live/guides/where-the-data-comes-from
 - opencam.live public camera map: https://opencam.live/
 - opencam.live source methodology: https://opencam.live/guides/where-the-data-comes-from
-- Freecam.ai Choolaimedu High Road webcam: https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/
+- OpenCCTV.org camera-view wrapper — Chennai / Tiruvottiyur: https://opencctv.org/cameras/india/chennai-district/chennai/chennai-east-tiruvottiyur-313940
+- OpenCCTV.org camera-view wrapper — Guwahati: https://opencctv.org/cameras/india/assam/guwahati/guwahati-assam-306464
+- OpenCCTV.org camera-view wrapper — Chennai / Choolaimedu High Road: https://opencctv.org/cameras/india/chennai-district/chennai/chennai-south-east-choolaimedu-high-road-302297
+- Freecam.ai Choolaimedu page reviewed as a source-discovery lead; replaced in the catalog with the OpenCCTV embed-enabled wrapper for the same named road view: https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/
 - Utsav nationwide Live Darshan directory: https://utsav.gov.in/public/live-darshan
 - KeaCam publisher page: https://kwschennai.com/keacam.htm
 - Vaishno Devi Shrine Board Live Darshan: https://maavaishnodevi.org/live

@@ -123,8 +123,10 @@
               "publisher-terms",
               "written-permission",
               "explicit-public-license",
-              "publisher-public-page"
-            ]
+              "publisher-public-page",
+              "publisher-embed-feature"
+            ],
+            "description": "publisher-embed-feature records a publisher-hosted camera wrapper only when its detail page explicitly provides copyable embed code; it does not authorize extracting or re-hosting upstream media."
           },
           "reuse_scope": {
             "type": "string",

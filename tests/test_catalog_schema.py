@@ -61,6 +61,21 @@ class CatalogSchemaTests(unittest.TestCase):
         del feed["terms_url"]
         self.assertTrue(self.errors(feed), "A listing must record the applicable terms.")
 
+ 
+    def test_embedding_requires_embedding_or_redistribution_permission(self):
+        feed = copy.deepcopy(VALID_APPROVED_FEED)
+        feed["viewing_method"] = "approved-embed"
+        self.assertTrue(self.errors(feed), "Link-only permission must not be used for an embedded player.")
+        feed["authorization"]["reuse_scope"] = "embedding"
+        self.assertEqual(self.errors(feed), [])
+
+    def test_direct_stream_requires_redistribution_permission(self):
+        feed = copy.deepcopy(VALID_APPROVED_FEED)
+        feed["viewing_method"] = "approved-stream"
+        self.assertTrue(self.errors(feed), "A direct stream must not be used under link-only permission.")
+        feed["authorization"]["reuse_scope"] = "redistribution"
+        self.assertEqual(self.errors(feed), [])
+
     def test_unknown_publication_status_is_rejected(self):
         feed = copy.deepcopy(VALID_APPROVED_FEED)
         feed["status"] = "online"

@@ -155,9 +155,28 @@ async function main() {
         terms_review_note: "This entry should fail the provider allow-list and never create an iframe."
       }
     });
-    const elements = await launchWith([embeddable, unsafeEmbed]);
-    assert.equal(elements["live-count"].textContent, "1");
+    const openCctv = approvedPage("opencctv-road-camera", {
+      id: "opencctv-road-camera",
+      name: "Chennai public road camera",
+      publisher_name: "OpenCCTV.org — third-party public camera directory",
+      publisher_url: "https://opencctv.org/",
+      source_page_url: "https://opencctv.org/cameras/india/chennai-district/chennai/chennai-east-tiruvottiyur-313940",
+      viewing_method: "approved-embed",
+      viewing_url: "https://opencctv.org/cameras/india/chennai-district/chennai/chennai-east-tiruvottiyur-313940",
+      authorization: {
+        status: "approved",
+        authorization_type: "publisher-embed-feature",
+        reuse_scope: "embedding",
+        evidence_reference: "https://opencctv.org/cameras/india/chennai-district/chennai/chennai-east-tiruvottiyur-313940",
+        terms_review_note: "The individual camera page explicitly provides a copyable iframe code for its hosted viewer. Only this wrapper is embedded."
+      }
+    });
+    const elements = await launchWith([embeddable, openCctv, unsafeEmbed]);
+    assert.equal(elements["live-count"].textContent, "2");
     assert.match(elements["live-wall"].innerHTML, /Official public live stream/);
+    assert.match(elements["live-wall"].innerHTML, /PUBLIC CAMERA VIEW/);
+    assert.match(elements["live-wall"].innerHTML, /src="https:\/\/opencctv\.org\/cameras\/india\/chennai-district\/chennai\/chennai-east-tiruvottiyur-313940"/);
+    assert.doesNotMatch(elements["live-wall"].innerHTML, /313940\?autoplay=1/);
     assert.match(elements["live-wall"].innerHTML, /autoplay=1/);
     assert.match(elements["live-wall"].innerHTML, /mute=1/);
     assert.match(elements["live-wall"].innerHTML, /allow="autoplay;/);

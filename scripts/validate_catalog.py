@@ -55,6 +55,14 @@ def main() -> int:
                 if not feed.get("publisher_name") or not feed.get("attribution"):
                     print(f"ERROR {path.relative_to(ROOT)}[{index}]: approved feed lacks publisher attribution")
                     error_count += 1
+                method = feed.get("viewing_method")
+                scope = auth.get("reuse_scope")
+                if method == "approved-embed" and scope not in ("embedding", "redistribution"):
+                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: embedding requires embedding or redistribution permission")
+                    error_count += 1
+                if method == "approved-stream" and scope != "redistribution":
+                    print(f"ERROR {path.relative_to(ROOT)}[{index}]: direct stream use requires explicit redistribution permission")
+                    error_count += 1
 
     if error_count:
         print(f"Catalog validation failed with {error_count} error(s).")

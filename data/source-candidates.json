@@ -1,0 +1,76 @@
+{
+  "generated_on": "2026-10-12",
+  "policy": "Research leads only. None of these entries is an approved camera feed and none should appear in the public feed catalog.",
+  "candidates": [
+    {
+      "id": "mumbai-traffic-police-cctv-page",
+      "publisher_name": "Mumbai Traffic Police",
+      "publisher_url": "https://trafficpolicemumbai.maharashtra.gov.in/",
+      "source_page_url": "https://trafficpolicemumbai.maharashtra.gov.in/cctv/",
+      "state": "Maharashtra",
+      "city": "Mumbai",
+      "source_type": "official CCTV programme page",
+      "actual_public_live_stream_verified": false,
+      "reuse_scope": "unknown",
+      "status": "permission-required",
+      "notes": "Official page describes CCTV integration for traffic management, but the page reviewed exposes no clear public video player or licence authorizing republication.",
+      "next_action": "Ask the department whether any public-facing traffic webcams exist and whether linking, embedding, or stream distribution is permitted."
+    },
+    {
+      "id": "delhi-traffic-police-public-interface",
+      "publisher_name": "Delhi Traffic Police",
+      "publisher_url": "https://www.traffic.delhipolice.gov.in/",
+      "source_page_url": "https://www.traffic.delhipolice.gov.in/en/public-interface",
+      "state": "Delhi",
+      "city": "Delhi",
+      "source_type": "official traffic information and camera-location information",
+      "actual_public_live_stream_verified": false,
+      "reuse_scope": "link-only for the public page only; no camera feed permission established",
+      "status": "not-a-feed",
+      "notes": "The public interface lists RLVD/OSVD camera information and traffic services; that is not evidence of a public live CCTV stream.",
+      "next_action": "Continue looking only for an intentionally public webcam page or a written authorization path."
+    },
+    {
+      "id": "kashi-iccc",
+      "publisher_name": "Kashi Official Web Portal / Varanasi Smart City",
+      "publisher_url": "https://kashi.gov.in/",
+      "source_page_url": "https://kashi.gov.in/project-details/kashi-integrated-command-control-center",
+      "state": "Uttar Pradesh",
+      "city": "Varanasi",
+      "source_type": "integrated command and control centre information page",
+      "actual_public_live_stream_verified": false,
+      "reuse_scope": "not established",
+      "status": "not-public-feed",
+      "notes": "The official page describes live feeds displayed on a video wall for city officials. No public stream or republication permission is offered on the page reviewed.",
+      "next_action": "Do not use the command-centre feeds. Only revisit if the authority publishes an explicitly public feed and its terms."
+    },
+    {
+      "id": "utsav-live-darshan-portal",
+      "publisher_name": "Ministry of Tourism — Utsav portal",
+      "publisher_url": "https://utsav.gov.in/",
+      "source_page_url": "https://utsav.gov.in/live-darshan",
+      "state": "India",
+      "city": "India",
+      "source_type": "public tourism/spiritual live-stream directory (not CCTV)",
+      "actual_public_live_stream_verified": true,
+      "reuse_scope": "link-only to the official directory; third-party stream reuse not verified",
+      "status": "out-of-scope-for-cctv-mvp",
+      "notes": "The portal presents public Live Darshan experiences. This is intentionally published livestream content, but it is not a city CCTV feed. The portal's policy requires permission to reproduce material and separate permission for third-party copyrighted material.",
+      "next_action": "Consider only as a separate optional public-livestream category. Link to the official directory in a new browser window; do not embed or redistribute streams without rights-holder permission."
+    },
+    {
+      "id": "nic-webcast-public-channels",
+      "publisher_name": "National Informatics Centre (NIC)",
+      "publisher_url": "https://webcast.gov.in/",
+      "source_page_url": "https://webcast.gov.in/?lang=en",
+      "state": "India",
+      "city": "India",
+      "source_type": "official government channels and event webcasts (not CCTV)",
+      "actual_public_live_stream_verified": true,
+      "reuse_scope": "link-only to source page pending any channel-specific terms",
+      "status": "out-of-scope-for-cctv-mvp",
+      "notes": "NIC publishes live government channels and event webcasts; these are broadcasts, not street/road surveillance-camera feeds.",
+      "next_action": "Do not classify as CCTV. Only consider a separate webcast directory after channel terms and attribution have been reviewed."
+    }
+  ]
+}

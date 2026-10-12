@@ -12,7 +12,7 @@ This pre-release packages the initial project foundation for development and rev
 
 ## Explicit limitations
 - The catalog includes one approved link-only weather webcam page in Chennai, but zero approved road/traffic CCTV feeds. No media is copied, embedded, proxied or recorded.
-- Android UI is not yet connected to the catalog and does not play camera streams.
+- Android loads the public catalog over HTTPS and opens each approved publisher page externally; the MVP does not embed or play camera streams.
 - The website is not considered deployed until GitHub Pages is enabled and the deployment workflow succeeds.
 - The project has not been submitted to the Google Play Store.
 - A debug APK is not a signed production Android App Bundle.

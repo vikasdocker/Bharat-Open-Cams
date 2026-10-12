@@ -58,6 +58,8 @@ Missing or ambiguous evidence means **do not publish**.
 - **M4 — Android MVP:** browse, detail, favorites and approved playback.
 - **M5 — Release readiness:** tests, privacy/legal/platform review, observability, incident and removal process.
 
+**M6 — Viewer access and anti-abuse controls:** configure Google identity, validate sessions server-side, enforce approved feed scopes at a backend, add rate limits and leak deterrence, and test native Android screen-capture restrictions. Do not claim screenshot prevention for ordinary browsers or external publisher pages. See [Viewer Access and Anti-Abuse Architecture](SECURITY_ARCHITECTURE.md).
+
 ## Definition of done
 - Inspect repository and project docs before changes.
 - Work in focused feature branches and review pull requests where possible.

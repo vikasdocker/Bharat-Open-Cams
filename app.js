@@ -36,8 +36,10 @@
       var host = parsed.hostname.toLowerCase();
       var youtubeHost = host === "youtube.com" || host === "www.youtube.com" ||
         host === "youtube-nocookie.com" || host === "www.youtube-nocookie.com";
-      if (youtubeHost && /^\\/embed\\/[A-Za-z0-9_-]{6,}$/.test(parsed.pathname)) return parsed.href;
-      if (host === "player.vimeo.com" && /^\\/video\\/[0-9]+$/.test(parsed.pathname)) return parsed.href;
+      var youtubeParts = parsed.pathname.split("/");
+      if (youtubeHost && youtubeParts.length === 3 && youtubeParts[1] === "embed" && /^[A-Za-z0-9_-]{6,}$/.test(youtubeParts[2])) return parsed.href;
+      var vimeoParts = parsed.pathname.split("/");
+      if (host === "player.vimeo.com" && vimeoParts.length === 3 && vimeoParts[1] === "video" && /^[0-9]+$/.test(vimeoParts[2])) return parsed.href;
       return "";
     } catch (error) {
       return "";

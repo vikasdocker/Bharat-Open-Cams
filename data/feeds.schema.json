@@ -317,6 +317,32 @@
             }
           }
         }
+      },
+      {
+        "if": {
+          "properties": {
+            "authorization": {
+              "properties": {
+                "authorization_type": {
+                  "const": "publisher-public-page"
+                }
+              },
+              "required": [
+                "authorization_type"
+              ]
+            }
+          },
+          "required": [
+            "authorization"
+          ]
+        },
+        "then": {
+          "not": {
+            "required": [
+              "viewing_url"
+            ]
+          }
+        }
       }
     ]
   }

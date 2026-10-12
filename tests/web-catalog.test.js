@@ -88,6 +88,9 @@ async function main() {
         evidence_reference: "https://kwschennai.com/keacam.htm"
       }
     });
+    const directMediaUrlOnPublicPage = approvedPage("bad-direct-url", {
+      viewing_url: "https://kwschennai.com/not-approved-image.jpg"
+    });
     const embeddedWithoutPermission = approvedPage("bad-embed", {
       viewing_method: "approved-embed",
       authorization: {
@@ -98,10 +101,11 @@ async function main() {
         terms_review_note: "Publisher page reviewed; this is only a public link."
       }
     });
-    const elements = await launchWith([good, pending, missingReview, embeddedWithoutPermission]);
+    const elements = await launchWith([good, pending, missingReview, embeddedWithoutPermission, directMediaUrlOnPublicPage]);
     assert.match(elements["feed-grid"].innerHTML, /Chennai weather station webcam/);
     assert.match(elements["feed-grid"].innerHTML, /https:\/\/kwschennai\.com\/keacam\.htm/);
     assert.doesNotMatch(elements["feed-grid"].innerHTML, /Private residential camera/);
+    assert.doesNotMatch(elements["feed-grid"].innerHTML, /not-approved-image\.jpg/);
     assert.equal(elements["feed-count"].textContent, "1");
     assert.ok(elements["feed-grid"].innerHTML.includes("template=feed-removal.yml"));
     assert.equal(elements["feed-grid"].attributes["aria-busy"], "false");

@@ -1,7 +1,6 @@
 package com.bharatopencams
 
 import org.json.JSONArray
-import org.json.JSONObject
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
@@ -75,7 +74,7 @@ object FeedCatalogRepository {
             if (viewingMethod == "approved-embed" && reuseScope !in setOf("embedding", "redistribution")) continue
             if (viewingMethod == "approved-stream" && reuseScope != "redistribution") continue
             if (authorizationType == "publisher-public-page" &&
-                (viewingMethod != "official-link" || reuseScope != "link-only")
+                (viewingMethod != "official-link" || reuseScope != "link-only" || item.has("viewing_url"))
             ) continue
 
             val evidenceReference = authorization.optString("evidence_reference").trim()

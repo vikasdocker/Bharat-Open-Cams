@@ -69,6 +69,14 @@ class CatalogSchemaTests(unittest.TestCase):
         feed["authorization"]["reuse_scope"] = "embedding"
         self.assertTrue(self.errors(feed), "Publisher-public-page approval must remain link-only.")
 
+
+    def test_public_page_permission_rejects_direct_media_url(self):
+        feed = copy.deepcopy(VALID_APPROVED_FEED)
+        feed["authorization"]["authorization_type"] = "publisher-public-page"
+        feed["authorization"]["terms_review_note"] = "Reviewed public source page; outbound link only."
+        feed["viewing_url"] = "https://city.example.gov/snapshot.jpg"
+        self.assertTrue(self.errors(feed), "Public-page-only approvals must not contain direct media URLs.")
+
     def test_non_https_publisher_is_rejected(self):
         feed = copy.deepcopy(VALID_APPROVED_FEED)
         feed["publisher_url"] = "http://city.example.gov/"

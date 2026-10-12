@@ -1,7 +1,6 @@
 name: Report a listing or request removal
 description: Report inaccurate source details, changed terms, or request removal of a camera listing.
 title: "[Feed review/removal]: "
-labels: ["feed-review"]
 body:
   - type: markdown
     attributes:

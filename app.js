@@ -56,7 +56,8 @@
       if (["link-only", "embedding", "redistribution"].indexOf(scope) === -1) return false;
       if (method === "approved-embed" && ["embedding", "redistribution"].indexOf(scope) === -1) return false;
       if (method === "approved-stream" && scope !== "redistribution") return false;
-      if (authorizationType === "publisher-public-page" && (method !== "official-link" || scope !== "link-only")) return false;
+      if (authorizationType === "publisher-public-page" &&
+          (method !== "official-link" || scope !== "link-only" || Object.prototype.hasOwnProperty.call(feed, "viewing_url"))) return false;
       return true;
     });
   }
@@ -87,8 +88,13 @@
     var publisher = escapeHtml(feed.publisher_name);
     var description = escapeHtml(feed.description || "An officially published public view with source details and attribution.");
     var category = escapeHtml(labelForCategory(feed.category));
-    var source = safeHttpsUrl(feed.viewing_url) || safeHttpsUrl(feed.source_page_url);
-    var linkLabel = feed.viewing_method === "official-link" || !safeHttpsUrl(feed.viewing_url) ? "Open source" : "View camera";
+    var publicPageOnly = feed.authorization && feed.authorization.authorization_type === "publisher-public-page";
+    var source = publicPageOnly
+      ? safeHttpsUrl(feed.source_page_url)
+      : safeHttpsUrl(feed.viewing_url) || safeHttpsUrl(feed.source_page_url);
+    var linkLabel = publicPageOnly || feed.viewing_method === "official-link" || !safeHttpsUrl(feed.viewing_url)
+      ? "Open source"
+      : "View camera";
     var locationLabel = area ? city + " · " + area : city;
     return '<article class="feed-card">' +
       '<div class="feed-thumb"><span class="category-pill">' + category + '</span><span class="status-pill">✓ Verified source</span></div>' +

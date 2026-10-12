@@ -2,7 +2,7 @@ name: Create draft pre-release
 
 on:
   # The first merge to main creates a draft v0.1.0 pre-release.
-  # Later main pushes are harmless: the workflow is idempotent once it exists.
+  # A successful main-branch Android build subsequently attaches its debug APK.
   push:
     branches: ["main"]
   workflow_dispatch:
@@ -12,16 +12,21 @@ on:
         required: true
         default: "v0.1.0"
         type: string
+  workflow_run:
+    workflows: ["Android debug build"]
+    types: [completed]
+    branches: ["main"]
 
 permissions:
   contents: read
 
 jobs:
   create-draft:
-    name: Create draft pre-release
-    if: github.ref == 'refs/heads/main'
+    name: Create or update draft pre-release
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main'))
     runs-on: ubuntu-latest
     permissions:
+      actions: read
       contents: write
     steps:
       - name: Checkout main
@@ -29,6 +34,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
       - name: Validate release tag and check existing release
         id: release-check
         env:
@@ -46,6 +52,7 @@ jobs:
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
+
       - name: Create draft pre-release
         if: steps.release-check.outputs.exists == 'false'
         env:
@@ -59,3 +66,30 @@ jobs:
             --prerelease \
             --title "Bharat Open Cams $RELEASE_TAG" \
             --notes-file docs/RELEASE_NOTES.md
+
+      - name: Download successful Android debug artifact
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: bharat-open-cams-debug
+          path: artifacts
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Attach debug APK to draft release
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag_name || 'v0.1.0' }}
+        run: |
+          set -euo pipefail
+          mapfile -t apks < <(find artifacts -type f -name '*.apk' -print)
+          if [[ "${#apks[@]}" -ne 1 ]]; then
+            echo "Expected exactly one APK in the Android workflow artifact; found ${#apks[@]}." >&2
+            exit 1
+          fi
+          mv "${apks[0]}" artifacts/Bharat-Open-Cams-debug.apk
+          gh release upload "$RELEASE_TAG" artifacts/Bharat-Open-Cams-debug.apk \
+            --repo "$GITHUB_REPOSITORY" \
+            --clobber

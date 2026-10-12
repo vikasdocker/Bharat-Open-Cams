@@ -1,12 +1,28 @@
 # India Source Research Register
 
 **Last researched:** 12 October 2026  
-**Public approved road/traffic CCTV feeds found in this review:** 0
-**Additional city/authority portals reviewed:** Hyderabad, Kolkata, Maharashtra Highway Traffic Police, and an NHAI expressway camera specification. These remain research leads, not approved feeds.  
-**Approved link-only public camera/live-view sources:** 9 (KeaCam, Chennai; AQI Camera page, New Delhi; ISKCON Delhi Live Darshan, New Delhi; Mumbadevi Mandir, Mumbai; Shree Saibaba Samadhi Mandir, Shirdi; Vitthal Rukmini Mandir, Pandharpur; Vaishno Devi Shrine, Katra; Kashi Vishwanath, Varanasi; Somnath Trust, Somnath).  
-**Important:** these nine catalog entries are link-only and open their publishers' canonical pages; they are not embeddable feeds. Temple live-darshan availability follows each publisher's schedule and any official access steps. They do not provide road/traffic CCTV access. Other authority pages below remain research leads only and are not approved camera feeds. Nothing from the research register is automatically permission to copy or redistribute media.
+**Individually verified road/traffic CCTV endpoints approved for direct integration:** 0.  
+**Catalog size:** 27 outbound-link entries (2 nationwide discovery hubs and 25 individual public-source pages).  
+**Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
+**Important:** the ARGOS ATLAS entry is a third-party public camera-map directory, not a Government of India service; its individual camera sources/terms remain the authority cited by that operator. Utsav's Live Darshan items are public-venue livestreams, not road CCTV. All 27 entries are link-only: Bharat Open Cams does not embed, copy, extract, cache, proxy or record source media. Some live views may be schedule-dependent. The city/highway authority pages below remain research leads, not camera feeds; public reachability is not blanket permission to reuse media.
 
-## Approved listing
+## Nationwide discovery hubs (link-only)
+
+### ARGOS ATLAS — India public camera map
+
+Public map: https://argosatlas.com/en/cameras/india/  
+About the operator: https://argosatlas.com/en/sobre/
+
+ARGOS ATLAS presents a nationwide map of public traffic cameras and webcams, with a source reference displayed for each point. Its English India page reported 35 active points at this review, while the localized Spanish page showed a different count; the operator says the catalogue changes daily and most items are periodic still frames rather than continuous video. The catalog entry links to the map only. It is a third-party aggregator, **not a government service**, and inclusion does not grant any permission to republish its own map or an underlying camera's imagery. Viewers should inspect each camera's cited source and its conditions on the operator's site.
+
+### Ministry of Tourism — Utsav Live Darshan directory
+
+Public directory: https://utsav.gov.in/public/live-darshan  
+Website policies: https://utsav.gov.in/website-policies
+
+Utsav describes its Live Darshan directory as a way to experience publicly presented destinations, rituals and spiritual experiences remotely; it showed 75 listings at review time. These are public-venue live streams, not street CCTV. The catalog links to the Utsav directory and selected individual Utsav pages only. It does not frame/embed Utsav, extract stream links, copy imagery, proxy or record video. Utsav's website policies apply, and stream availability/timings may change.
+
+## Individual publisher pages
 
 ### KeaCam — KWS Chennai weather-station webcams
 
@@ -68,6 +84,30 @@ The temple's official page offers online darshan and live-streaming, with separa
 Canonical publisher page: https://www.sai.org.in/en
 
 The official Shree Saibaba Sansthan Trust page expressly provides a “Real Time Official Live Darshan” link and warns visitors against unauthorized third-party streams. The directory directs users to the Trust's own page and does not embed or rehost media. **Status: approved for ordinary external linking only; follow the Trust's official route.**
+
+
+### Additional Utsav live-view pages added in this pass
+
+The following publicly listed viewing pages are linked directly as city/town cards. They remain link-only; no media is embedded or copied.
+
+| Location | Utsav public page |
+|---|---|
+| Dwarka, Gujarat | https://utsav.gov.in/public/view-darshan/dwarkadhish-temple-live-darshan-1 |
+| Ujjain, Madhya Pradesh | https://utsav.gov.in/view-darshan/shree-mahakaleshwar-temple-live-darshan-1 |
+| Nashik / Trimbak, Maharashtra | https://utsav.gov.in/public/view-darshan/trimbakeshwar-devasthan-trust-1 |
+| Dakor, Gujarat | https://utsav.gov.in/view-darshan/shri-ranchhodraiji-live-darshan-2 |
+| Bhuj, Gujarat | https://utsav.gov.in/view-darshan/bhuj-dham-live-darshan |
+| Bhurakhiya, Gujarat | https://utsav.gov.in/view-darshan/bhurakhiya-temple |
+| Maihar, Madhya Pradesh | https://utsav.gov.in/view-darshan/maa-sharda-temple-live-darshan |
+| Indore, Madhya Pradesh | https://utsav.gov.in/view-darshan/khajrana-ganesh-mandir-live-darshan-1 |
+| Omkareshwar, Madhya Pradesh | https://utsav.gov.in/view-darshan/shri-omkareshwar-live-darshan |
+| Mandafiya, Rajasthan | https://utsav.gov.in/view-darshan/sanwaliya-ji-temple |
+| Dongargarh, Chhattisgarh | https://utsav.gov.in/public/view-darshan/maa-bamleshwari-mandir-dongargarh-1 |
+| Kolhapur, Maharashtra | https://utsav.gov.in/public/view-darshan/shri-mahalaxmi-ambabai-temple-kolhapur-1 |
+| Ganpatipule, Maharashtra | https://utsav.gov.in/view-darshan/sansthan-shreedev-ganpatipule |
+| Tirumala, Andhra Pradesh | https://utsav.gov.in/public/view-darshan/tirumala-tirupati-4 |
+| Kolhapur district, Maharashtra | https://utsav.gov.in/view-darshan/shree-karveer-niwasini-ambabai-temple-kolhapur |
+| Jyotiba Hill, Maharashtra | https://utsav.gov.in/public/view-darshan/shri-jyotiba-temple-1 |
 
 
 ## Findings
@@ -149,7 +189,7 @@ The official page publishes daily darshan times and a video player, but the revi
 
 ## Research conclusion
 
-I did not find a source in this review that met all criteria for an approved public road/traffic CCTV feed. Nine deliberately published public pages are listed under link-only scope across Chennai, New Delhi, Delhi, Mumbai, Shirdi, Pandharpur, Katra, Varanasi and Somnath. These include one weather webcam, one AQI city-camera page and seven public-venue/live-darshan pages. They are not road/traffic CCTV; public road-camera viewing routes and permission remain unverified.
+The current catalog now has 27 outbound-link entries: two nationwide directory hubs and 25 individual public source pages across India. The ARGOS ATLAS hub links to its changing India camera map; the Utsav hub links to the Ministry of Tourism's Live Darshan directory, and 16 of its regional live-view pages have city/town cards. These improve reach to public camera/live-view sources, but they are not 27 individually integrated CCTV streams. **No individually verified road/traffic CCTV endpoint is embedded or directly integrated by Bharat Open Cams yet.** Obtaining actual traffic-CCTV viewing endpoints requires official publisher confirmation and terms that authorize the exact viewing method.
 
 The next legitimate route for the road-CCTV goal is source-owner outreach:
 1. Ask official traffic/municipal authorities whether they publish public traffic webcams.
@@ -159,6 +199,8 @@ The next legitimate route for the road-CCTV goal is source-owner outreach:
 
 ## Research references
 
+- ARGOS ATLAS India camera map: https://argosatlas.com/en/cameras/india/
+- Utsav nationwide Live Darshan directory: https://utsav.gov.in/public/live-darshan
 - KeaCam publisher page: https://kwschennai.com/keacam.htm
 - Vaishno Devi Shrine Board Live Darshan: https://maavaishnodevi.org/live
 - Kashi Vishwanath official Live Darshan portal: https://www.shrikashivishwanath.org/

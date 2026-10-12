@@ -2,8 +2,8 @@
 
 **Last researched:** 12 October 2026  
 **Individually verified road/traffic CCTV endpoints approved for direct integration:** 0.  
-**Catalog size:** 27 outbound-link entries (2 nationwide discovery hubs and 25 individual public-source pages).  
-**Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
+**Catalog size:** 29 outbound-link entries (3 nationwide discovery hubs and 26 individual public-source pages).  
+**Nationwide hub research:** ARGOS ATLAS's India page presented approximately 35 public camera points during this review; its English and localized pages showed different counts, and the operator says availability changes daily. OpenCCTV.org's India directory reported 8 camera listings, with individual status varying. The Ministry of Tourism's Utsav portal displayed 75 Live Darshan listings during this review. These are link-outs only—not fixed coverage promises.  
 **Important:** the ARGOS ATLAS entry is a third-party public camera-map directory, not a Government of India service; its individual camera sources/terms remain the authority cited by that operator. Utsav's Live Darshan items are public-venue livestreams, not road CCTV. All 27 entries are link-only: Bharat Open Cams does not embed, copy, extract, cache, proxy or record source media. Some live views may be schedule-dependent. The city/highway authority pages below remain research leads, not camera feeds; public reachability is not blanket permission to reuse media.
 
 ## Nationwide discovery hubs (link-only)
@@ -189,7 +189,7 @@ The official page publishes daily darshan times and a video player, but the revi
 
 ## Research conclusion
 
-The current catalog now has 27 outbound-link entries: two nationwide directory hubs and 25 individual public source pages across India. The ARGOS ATLAS hub links to its changing India camera map; the Utsav hub links to the Ministry of Tourism's Live Darshan directory, and 16 of its regional live-view pages have city/town cards. These improve reach to public camera/live-view sources, but they are not 27 individually integrated CCTV streams. **No individually verified road/traffic CCTV endpoint is embedded or directly integrated by Bharat Open Cams yet.** Obtaining actual traffic-CCTV viewing endpoints requires official publisher confirmation and terms that authorize the exact viewing method.
+The current catalog now has 29 outbound-link entries: three nationwide directory hubs and 26 individual public source pages across India. The hubs link to ARGOS ATLAS's India camera map, OpenCCTV.org's public camera directory and the Ministry of Tourism's Live Darshan directory; 16 Utsav regional pages and one third-party Chennai street webcam have their own location-based cards. These improve reach to public camera/live-view sources, but they are not 29 individually integrated CCTV streams. **No individually verified road/traffic CCTV endpoint is embedded or directly integrated by Bharat Open Cams yet.** Obtaining actual traffic-CCTV viewing endpoints requires official publisher confirmation and terms that authorize the exact viewing method.
 
 The next legitimate route for the road-CCTV goal is source-owner outreach:
 1. Ask official traffic/municipal authorities whether they publish public traffic webcams.
@@ -200,6 +200,8 @@ The next legitimate route for the road-CCTV goal is source-owner outreach:
 ## Research references
 
 - ARGOS ATLAS India camera map: https://argosatlas.com/en/cameras/india/
+- OpenCCTV.org India camera directory: https://opencctv.org/cameras/india
+- Freecam.ai Choolaimedu High Road webcam: https://freecam.ai/india/chennai/chennai-south-east-choolaimedu-high-road/
 - Utsav nationwide Live Darshan directory: https://utsav.gov.in/public/live-darshan
 - KeaCam publisher page: https://kwschennai.com/keacam.htm
 - Vaishno Devi Shrine Board Live Darshan: https://maavaishnodevi.org/live
